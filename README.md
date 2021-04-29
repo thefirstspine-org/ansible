@@ -24,6 +24,7 @@ docker run --rm -v ~/.ssh:/root/.ssh -v {path}/conf/hosts/:/etc/ansible/hosts -v
 ```
 
 Comments:
+- `-v ~/.ssh:/root/.ssh` - transfer SSH keys to the container
 - `-v {path}/conf/hosts/:/etc/ansible/hosts` - inventory
 - `-v {path}/playbooks:/playbooks` - playbooks
 - `ansible ansible-playbook /playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
