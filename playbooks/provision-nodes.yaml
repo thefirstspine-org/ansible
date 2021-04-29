@@ -1,0 +1,15 @@
+# This playbook provision all the servers
+
+# Apply common configuration to all hosts
+- hosts: apps
+  roles:
+  - nginx
+  - certbot
+  - docker
+
+# Configure and deploy database servers.
+- hosts: dbs
+  roles:
+  - docker
+  - docker-pgsql
+  - docker-mongodb
