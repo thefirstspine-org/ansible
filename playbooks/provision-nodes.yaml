@@ -6,8 +6,8 @@
     certbot_auto_renew: false
   roles:
   - nginx
-  - geerlingguy.certbot
-  - geerlingguy.docker
+  - certbot
+  - docker
 
 # Configure and deploy database servers.
 - hosts: dbs
