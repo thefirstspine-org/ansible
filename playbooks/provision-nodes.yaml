@@ -13,5 +13,5 @@
 - hosts: dbs
   roles:
   - docker
-  #- tfs.docker-pgsql
-  #- tfs.docker-mongodb
+  - docker-pgsql
+  - docker-mongodb
