@@ -2,14 +2,16 @@
 
 # Apply common configuration to all hosts
 - hosts: apps
+  vars:
+    certbot_auto_renew: false
   roles:
   - nginx
-  - certbot
-  - docker
+  - geerlingguy.certbot
+  - geerlingguy.docker
 
 # Configure and deploy database servers.
 - hosts: dbs
   roles:
   - docker
-  - docker-pgsql
-  - docker-mongodb
+  #- tfs.docker-pgsql
+  #- tfs.docker-mongodb
