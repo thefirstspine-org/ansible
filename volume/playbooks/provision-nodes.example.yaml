@@ -12,6 +12,10 @@
 # Configure and deploy database servers.
 - hosts: dbs
   roles:
-  - docker
-  - docker-pgsql
-  - docker-mongodb
+    - docker
+    - docker-pgsql
+    - docker-mongodb
+    - role: pgsql-database
+      database: auth
+      user: auth
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!

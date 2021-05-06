@@ -1,0 +1,25 @@
+apps:
+  hosts:
+    app1:
+      ansible_host: 10.16.10.11
+      ansible_connection: ssh
+      ansible_user: root
+      ansible_ssh_pass: password
+    app2:
+      ansible_host: 10.16.10.11
+      ansible_connection: ssh
+      ansible_user: root
+      ansible_ssh_pass: password
+
+dbs:
+  hosts:
+    db1:
+      ansible_host: 10.16.10.11
+      ansible_connection: ssh
+      ansible_user: root
+      ansible_ssh_pass: password
+    db2:
+      ansible_host: 10.16.10.11
+      ansible_connection: ssh
+      ansible_user: root
+      ansible_ssh_pass: password

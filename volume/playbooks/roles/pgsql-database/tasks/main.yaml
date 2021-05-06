@@ -1,0 +1,8 @@
+- name: Create {{ database }} database
+  command: docker exec some-postgres psql -U postgres -c "create database {{ database }}"
+- name: Create {{ user }} user
+  command: docker exec some-postgres psql -U postgres -c "create user {{ user }}"
+- name: Create password for {{ user }} user
+  command: docker exec some-postgres psql -U postgres -c "ALTER USER {{ user }} WITH PASSWORD '{{ password }}'"
+- name: Assign {{ user }} user to database {{ database }}
+  command: docker exec some-postgres psql -U postgres -c "grant all privileges on database {{ user }} to {{ database }}"

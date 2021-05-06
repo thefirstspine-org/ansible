@@ -1,1 +1,3 @@
-conf/hosts
+volume/conf/inventory.yaml
+volume/vault.yaml
+volume/playbooks/provision-nodes.yaml
