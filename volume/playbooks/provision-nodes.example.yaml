@@ -13,7 +13,8 @@
 - hosts: dbs
   roles:
     - docker
-    - docker-pgsql
+    - role: docker-pgsql
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
     - docker-mongodb
     - role: pgsql-database
       database: auth
