@@ -1,3 +1,6 @@
+# APPS GROUP
+# This group represents the servers that will serve applications.
+# Apps can be deployed on these servers.
 apps:
   hosts:
     app1:
@@ -11,6 +14,8 @@ apps:
       ansible_user: root
       ansible_ssh_pass: password
 
+# DATABASES GROUP
+# This group represents the servers that will acts as databases.
 dbs:
   hosts:
     db1:

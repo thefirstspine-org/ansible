@@ -1,6 +1,9 @@
 # This playbook provision all the servers
 
-# Apply common configuration to all hosts
+# Remember to allow only trusted trafic (e.g. whitelisted IPs, internal network, etc.) in the
+# databases servers. The MongoDB database does not provides password by default.
+
+# Provision apps servers
 - hosts: apps
   vars:
     certbot_auto_renew: false
@@ -9,7 +12,7 @@
   - certbot
   - docker
 
-# Configure and deploy database servers.
+# Provision database servers
 - hosts: dbs
   roles:
     - docker
