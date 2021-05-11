@@ -23,3 +23,27 @@
       database: auth
       user: auth
       password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+    - role: pgsql-database
+      database: calendar
+      user: calendar
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+    - role: pgsql-database
+      database: drifters_tales_worlds
+      user: drifters_tales_worlds
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+    - role: pgsql-database
+      database: rooms
+      user: rooms
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+    - role: pgsql-database
+      database: shop
+      user: shop
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+    - role: pgsql-database
+      database: solid_pancake
+      user: solid_pancake
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+    - role: pgsql-database
+      database: website
+      user: website
+      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
