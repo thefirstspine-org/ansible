@@ -17,33 +17,33 @@
   roles:
     - docker
     - role: docker-pgsql
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_password }}"
     - docker-mongodb
     - role: pgsql-database
       database: auth
       user: auth
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_auth_password }}"
     - role: pgsql-database
       database: calendar
       user: calendar
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_calendar_password }}"
     - role: pgsql-database
       database: drifters_tales_worlds
       user: drifters_tales_worlds
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_drifters_tales_worlds_password }}"
     - role: pgsql-database
       database: rooms
       user: rooms
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_rooms_password }}"
     - role: pgsql-database
       database: shop
       user: shop
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_shop_password }}"
     - role: pgsql-database
       database: solid_pancake
       user: solid_pancake
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_solid_pancake_password }}"
     - role: pgsql-database
       database: website
       user: website
-      password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      password: "{{ docker_psql_website_password }}"

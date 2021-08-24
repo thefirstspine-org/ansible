@@ -8,11 +8,25 @@ apps:
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
+      has_arena_refuge: true
+      has_arena_sanctuaire: true
+      has_arena_sanctuary: true
+      has_arena_shelter: true
     app2:
       ansible_host: 10.16.10.11
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
+      has_auth: true
+      has_bots: true
+      has_calendar: true
+      has_drifters_tales_worlds: true
+      has_messaging: true
+      has_rest: true
+      has_rooms: true
+      has_shop: true
+      has_solid_pancake: true
+      has_website: true
 
 # DATABASES GROUP
 # This group represents the servers that will acts as databases.
@@ -23,8 +37,11 @@ dbs:
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
-    db2:
-      ansible_host: 10.16.10.11
-      ansible_connection: ssh
-      ansible_user: root
-      ansible_ssh_pass: password
+      docker_psql_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      docker_psql_auth_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      docker_psql_calendar_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      docker_psql_drifters_tales_worlds_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      docker_psql_rooms_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      docker_psql_shop_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      docker_psql_solid_pancake_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      docker_psql_website_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!

@@ -29,12 +29,6 @@ Copy the file `volume/conf/inventory.example.yaml` under `volume/conf/inventory.
 
 Please, remember that passwords **MUST** be encrypted using Vault (see Encrypt string with Vault)
 
-### Create playbooks
-
-Copy the file `volume/playbooks/*.example.yaml` under `volume/playbooks/*.yaml`. These playbooks requires some passwords to be filled.
-
-Please, remember that passwords **MUST** be encrypted using Vault (see Encrypt string with Vault)
-
 ### You're ready!
 
 You are now ready to provision nodes and deploy apps!
@@ -64,11 +58,41 @@ Comments:
 - `-i /volume/conf/inventory.yaml` - the inventory
 - `ansible ansible-playbook /volume/playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
 
+## Deploy an app
+
+To provision the nodes you should launch the `ansible-playbook` command.
+
+```
+docker run --rm -i -v {path}/volume:/volume ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deplo-{app}.yaml
+```
+
+`{app}` is one of the below app:
+- arena_refuge
+- arena_sanctuaire
+- arena_sanctuary
+- arena_shelter
+- auth
+- bots
+- calendar
+- drifters_tales_worlds
+- messaging
+- rest
+- rooms
+- shop
+- solid_pancake
+- website
+
+Comments:
+- `--ask-vault-pass` - ask for password
+- `-v {path}/volume:/volume` - volume
+- `-i /volume/conf/inventory.yaml` - the inventory
+- `ansible ansible-playbook /volume/playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
+
 ## Troubleshooting
 
 ### Host key verification failed.
 
-In order to disable host key checking in Ansible is by setting the `ANSIBLE_HOST_KEY_CHECKING` environment variable to `False`. To do so, add `-e ANSIBLE_HOST_KEY_CHECKING=False` to the command.
+In order to disable host key checking in Ansible you should set the `ANSIBLE_HOST_KEY_CHECKING` environment variable to `False`. To do so, add `-e ANSIBLE_HOST_KEY_CHECKING=False` to the command.
 
 ## Used roles
 

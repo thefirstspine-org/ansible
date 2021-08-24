@@ -14,7 +14,7 @@
     restart_policy: 'always'
     published_ports: '5432:5432'
     env:
-      POSTGRES_PASSWORD: {{ password }}
+      POSTGRES_PASSWORD: "{{ password }}"
     volumes:
       - /data/postgres:/var/lib/postgresql/data
     image: postgres:13.0
