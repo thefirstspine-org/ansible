@@ -29,6 +29,12 @@ Copy the file `volume/conf/inventory.example.yaml` under `volume/conf/inventory.
 
 Please, remember that passwords **MUST** be encrypted using Vault (see Encrypt string with Vault)
 
+### Create SSH keypair
+
+You can run `ssh-keygen -t ed25519 -C "your_email@example.com"` on your local machine to generate a key pair. The key pair has to be under the path `volume/keys/id` / `volume/keys/id.pub`.
+
+Follow the Github instructions to add the public key to Github: https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
 ### You're ready!
 
 You are now ready to provision nodes and deploy apps!
@@ -63,7 +69,7 @@ Comments:
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deplo-{app}.yaml
+docker run --rm -i -v {path}/volume:/volume ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deploy-{app}.yaml
 ```
 
 `{app}` is one of the below app:

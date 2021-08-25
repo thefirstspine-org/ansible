@@ -1,0 +1,48 @@
+- name: Ensure /var/www/html directory has correct permissions.
+  file:
+    path: /var/www/html
+    state: directory
+    owner: www-data
+    group: www-data
+
+- name: Ensure .ssh directory exists.
+  file:
+    path: /var/www/.ssh
+    state: directory
+    mode: 0700
+    owner: www-data
+    group: www-data
+
+- name: Ensure GitHub deploy key is present on the server.
+  copy:
+    src: "{{ deploy_private_key }}"
+    dest: /var/www/.ssh/deploy_key
+    mode: 0600
+    owner: www-data
+    group: www-data
+
+# See: https://stackoverflow.com/a/37096534/100134
+- name: Ensure setfacl support is present.
+  package: name=acl
+
+- name: Clone repository {{ repository }} to /var/www/{{ service_name }}
+  git:
+    repo: "{{ repository }}"
+    dest: /var/www/{{ service_name }}
+    accept_hostkey: yes
+    key_file: /var/www/.ssh/deploy_key
+  become_user: www-data
+
+- name: Build image {{ service_name }}_image
+  docker_image:
+    name: "{{ service_name }}_image"
+    path: "/var/www/{{ service_name }}"
+    state: present
+
+- name: Run image {{ service_name }}_image under container {{ service_name }}_container
+  docker_container:
+    name: "{{ service_name }}_container"
+    image: "{{ service_name }}_image"
+    env: "{{ docker_env }}"
+    published_ports:
+      - "{{ port_nginx }}:{{ port_container }}"

@@ -8,25 +8,27 @@ apps:
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
-      has_arena_refuge: true
-      has_arena_sanctuaire: true
-      has_arena_sanctuary: true
-      has_arena_shelter: true
+      service_arena_refuge: true
+      service_arena_sanctuaire: true
+      service_arena_sanctuary: true
+      service_arena_shelter: true
     app2:
       ansible_host: 10.16.10.11
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
-      has_auth: true
-      has_bots: true
-      has_calendar: true
-      has_drifters_tales_worlds: true
-      has_messaging: true
-      has_rest: true
-      has_rooms: true
-      has_shop: true
-      has_solid_pancake: true
-      has_website: true
+      service_auth: true
+      service_auth_internal_port: 8081
+      service_auth_fb_app_client_id: 1234567890
+      service_auth_fb_app_client_secret: thisissecret!sshhh  # Change that placeholder password - and encrypt it with Vault!
+      service_auth_pg_database: auth
+      service_auth_pg_host: 10.16.10.11
+      service_auth_pg_port: 5432
+      service_auth_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      service_auth_pg_username: auth
+      service_auth_secret_key: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      service_auth_smtp_transport: smtps://user:password@host:465 # Change that placeholder password - and encrypt it with Vault!
+      service_auth_private_key: "{{ lookup('file', '/volume/keys/auth-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
 
 # DATABASES GROUP
 # This group represents the servers that will acts as databases.
