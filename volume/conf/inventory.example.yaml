@@ -8,6 +8,7 @@ apps:
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
+      certbot_email: me@email.com,
       service_arena_refuge: true
       service_arena_sanctuaire: true
       service_arena_sanctuary: true
@@ -17,6 +18,7 @@ apps:
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
+      certbot_email: me@email.com,
       service_auth: true
       service_auth_internal_port: 8081
       service_auth_fb_app_client_id: 1234567890

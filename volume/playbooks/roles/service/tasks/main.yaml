@@ -46,3 +46,28 @@
     env: "{{ docker_env }}"
     published_ports:
       - "{{ port_nginx }}:{{ port_container }}"
+
+- name: Register nginx block {{ domain }} to proxy through http://localhost:{{ port_nginx }}/
+  copy:
+    content: >
+      server {
+          listen 80;
+          server_name {{ domain }};   
+          location / {
+              proxy_pass http://localhost:{{ port_nginx }}/;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+          }
+      }
+    dest: /etc/nginx/sites-enabled/{{ domain }}
+    mode: 0600
+    owner: www-data
+    group: www-data
+
+- name: Call certbot with email {{ cerbot_email }}
+  command: certbot --nginx --email {{ cerbot_email }} -d %s --agree-tos --non-interactive --redirect
+
+- name: Restart nginx
+  command: systemctl restart nginx.service
