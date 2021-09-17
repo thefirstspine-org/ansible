@@ -19,7 +19,7 @@
             SECRET_KEY: "{{ service_auth_secret_key }}", # The secret key used to sign JWT
             SMTP_TRANSPORT: "{{ service_auth_smtp_transport }}", # Smtp transport used to send emails
             PRIVATE_KEY: "{{ service_auth_private_key }}", # Private key to validate protected incoming requests
-            PORT: "'8080'", # The port where to serve the app
+            PORT: "8080", # The port where to serve the app
         },
         port_container: "8080",
         port_nginx: "{{ service_auth_internal_port }}",
