@@ -10,9 +10,14 @@ apps:
       ansible_ssh_pass: password
       certbot_email: me@email.com,
       service_arena_refuge: true
-      service_arena_sanctuaire: true
-      service_arena_sanctuary: true
-      service_arena_shelter: true
+      service_arena_refuge_mongo_host: 10.16.10.11
+      service_arena_refuge_private_key: "{{ lookup('file', '/volume/keys/arena-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_arena_refuge_bots_public_key: "{{ lookup('file', '/volume/keys/bots-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_arena_refuge_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_arena_refuge_rooms_public_key: "{{ lookup('file', '/volume/keys/rooms-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_arena_refuge_shop_public_key: "{{ lookup('file', '/volume/keys/shop-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_arena_refuge_internal_port: 8082
+      service_arena_refuge_domain: refuge.arena.thefirstspine.fr
     app2:
       ansible_host: 10.16.10.11
       ansible_connection: ssh
@@ -20,6 +25,7 @@ apps:
       ansible_ssh_pass: password
       certbot_email: me@email.com,
       service_auth: true
+      service_auth_domain: auth.thefirstspine.fr
       service_auth_internal_port: 8081
       service_auth_fb_app_client_id: 1234567890
       service_auth_fb_app_client_secret: thisissecret!sshhh  # Change that placeholder password - and encrypt it with Vault!
@@ -31,6 +37,18 @@ apps:
       service_auth_secret_key: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       service_auth_smtp_transport: smtps://user:password@host:465 # Change that placeholder password - and encrypt it with Vault!
       service_auth_private_key: "{{ lookup('file', '/volume/keys/auth-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_bots: true
+      service_bots_domain: bots.thefirstspine.fr
+      service_messaging: true
+      service_messaging_domain: messaging.thefirstspine.fr
+      service_rest: true
+      service_rest_domain: rest.thefirstspine.fr
+      service_rooms: true
+      service_rooms_domain: rooms.thefirstspine.fr
+      service_shop: true
+      service_shop_domain: shop.thefirstspine.fr
+      service_calendar: true
+      service_calendar_domain: calendar.thefirstspine.fr
 
 # DATABASES GROUP
 # This group represents the servers that will acts as databases.
