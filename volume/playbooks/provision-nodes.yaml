@@ -10,6 +10,7 @@
   roles:
   - nginx
   - certbot
+  - certbot-nginx
   - docker
 
 # Provision database servers

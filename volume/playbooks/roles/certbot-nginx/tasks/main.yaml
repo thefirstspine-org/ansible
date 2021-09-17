@@ -1,0 +1,6 @@
+- name: Update and upgrade apt packages
+  apt:
+    update_cache: yes
+    upgrade: yes
+- name: ensure python3-certbot-nginx is at the latest version
+  apt: name=python3-certbot-nginx state=latest
