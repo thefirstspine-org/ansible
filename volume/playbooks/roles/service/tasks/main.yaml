@@ -67,7 +67,7 @@
     group: www-data
 
 - name: Call certbot with email {{ cerbot_email }}
-  command: certbot --nginx --email {{ cerbot_email }} -d %s --agree-tos --non-interactive --redirect
+  command: certbot --nginx --email {{ cerbot_email }} -d {{ domain }} --agree-tos --non-interactive --redirect
 
 - name: Restart nginx
   command: systemctl restart nginx.service
