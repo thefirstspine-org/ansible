@@ -9,7 +9,7 @@ The control node should be setuped with the `setup.sh` script present in the TFS
 This ansible node comes with a ready-to-use docker service.
 
 ```
-docker build -t ansible .
+docker build -t thefirstspine/ansible .
 ```
 
 ### Test container
@@ -17,7 +17,7 @@ docker build -t ansible .
 Then, you should test your container.
 
 ```
-docker run --rm -v {path}/volume:/volume ansible ansible-playbook --version
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook --version
 ```
 
 Comments:
@@ -44,7 +44,7 @@ You are now ready to provision nodes and deploy apps!
 You should encrypt your secrets. Do do it run the following command. A password will be prompt.
 
 ```
-docker run --rm -i -v {path}/volume:/volume ansible ansible-vault encrypt_string '{string to encrypt}'
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-vault encrypt_string '{string to encrypt}'
 ```
 
 Comments:
@@ -55,21 +55,21 @@ Comments:
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/provision-nodes.yaml
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/provision-nodes.yaml
 ```
 
 Comments:
 - `--ask-vault-pass` - ask for password
 - `-v {path}/volume:/volume` - volume
 - `-i /volume/conf/inventory.yaml` - the inventory
-- `ansible ansible-playbook /volume/playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
+- `ansible-playbook /volume/playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
 
 ## Deploy an app
 
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deploy-{app}.yaml
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deploy-{app}.yaml
 ```
 
 `{app}` is one of the below app:
@@ -92,7 +92,7 @@ Comments:
 - `--ask-vault-pass` - ask for password
 - `-v {path}/volume:/volume` - volume
 - `-i /volume/conf/inventory.yaml` - the inventory
-- `ansible ansible-playbook /volume/playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
+- `ansible-playbook /volume/playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
 
 ## Troubleshooting
 
