@@ -13,16 +13,16 @@ apps:
       # Service Matches
       service_matches: true
       service_matches_domain: matches.thefirstspine.fr
+      service_matches_internal_port: 8081
       service_matches_mongo_host: 10.16.10.11
       service_matches_private_key: "{{ lookup('file', '/volume/keys/matches-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
       service_matches_bots_public_key: "{{ lookup('file', '/volume/keys/bots-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
       service_matches_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
       service_matches_rooms_public_key: "{{ lookup('file', '/volume/keys/rooms-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
-      service_matches_internal_port: 8082
       # Service Auth
       service_auth: true
       service_auth_domain: auth.thefirstspine.fr
-      service_auth_internal_port: 8081
+      service_auth_internal_port: 8082
       service_auth_fb_app_client_id: 1234567890
       service_auth_fb_app_client_secret: thisissecret!sshhh  # Change that placeholder password - and encrypt it with Vault!
       service_auth_pg_database: auth
@@ -36,17 +36,21 @@ apps:
       # Service Bots
       service_bots: true
       service_bots_domain: bots.thefirstspine.fr
+      service_bots_internal_port: 8083
       service_bots_private_key: "{{ lookup('file', '/volume/keys/bots-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
       # Service Messaging
       service_messaging: true
       service_messaging_domain: messaging.thefirstspine.fr
+      service_messaging_internal_port: 8084
       service_messaging_private_key: "{{ lookup('file', '/volume/keys/messaging-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
       # Service Rest
       service_rest: true
       service_rest_domain: rest.thefirstspine.fr
+      service_rest_internal_port: 8085
       # Service Rooms
       service_rooms: true
       service_rooms_domain: rooms.thefirstspine.fr
+      service_rooms_internal_port: 8086
       service_rooms_pg_database: rooms
       service_rooms_pg_host: 10.16.10.11
       service_rooms_pg_port: 5432
@@ -56,6 +60,7 @@ apps:
       # Service Shop
       service_shop: true
       service_shop_domain: shop.thefirstspine.fr
+      service_shop_internal_port: 8087
       service_shop_pg_database: shop
       service_shop_pg_host: 10.16.10.11
       service_shop_pg_port: 5432
@@ -65,6 +70,7 @@ apps:
       # Service Calendar
       service_calendar: true
       service_calendar_domain: calendar.thefirstspine.fr
+      service_calendar_internal_port: 8088
       service_calendar_pg_database: calendar
       service_calendar_pg_host: 10.16.10.11
       service_calendar_pg_port: 5432
@@ -73,6 +79,7 @@ apps:
       # Service Website
       service_website: true
       service_website_domain: www.thefirstspine.fr
+      service_website_internal_port: 8089
       service_website_pg_database: website
       service_website_pg_host: 10.16.10.11
       service_website_pg_port: 5432
@@ -81,6 +88,7 @@ apps:
       # Service Solid Pancake
       service_solid_pancake: true
       service_solid_pancake_domain: solid-pancake.thefirstspine.fr
+      service_solid_pancake_internal_port: 8090
       service_solid_pancake_pg_database: solid_pancake
       service_solid_pancake_pg_host: 10.16.10.11
       service_solid_pancake_pg_port: 5432
