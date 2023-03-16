@@ -29,10 +29,6 @@
       user: calendar
       password: "{{ docker_psql_calendar_password }}"
     - role: pgsql-database
-      database: drifters_tales_worlds
-      user: drifters_tales_worlds
-      password: "{{ docker_psql_drifters_tales_worlds_password }}"
-    - role: pgsql-database
       database: rooms
       user: rooms
       password: "{{ docker_psql_rooms_password }}"
