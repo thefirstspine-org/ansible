@@ -73,10 +73,7 @@ docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbo
 ```
 
 `{app}` is one of the below app:
-- arena_refuge
-- arena_sanctuaire
-- arena_sanctuary
-- arena_shelter
+- matches
 - auth
 - bots
 - calendar
