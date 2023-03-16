@@ -4,26 +4,22 @@
 apps:
   hosts:
     app1:
+      # Global config
       ansible_host: 10.16.10.11
       ansible_connection: ssh
       ansible_user: root
       ansible_ssh_pass: password
-      certbot_email: me@email.com,
-      service_arena_refuge: true
-      service_arena_refuge_mongo_host: 10.16.10.11
-      service_arena_refuge_private_key: "{{ lookup('file', '/volume/keys/arena-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
-      service_arena_refuge_bots_public_key: "{{ lookup('file', '/volume/keys/bots-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
-      service_arena_refuge_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
-      service_arena_refuge_rooms_public_key: "{{ lookup('file', '/volume/keys/rooms-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
-      service_arena_refuge_shop_public_key: "{{ lookup('file', '/volume/keys/shop-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
-      service_arena_refuge_internal_port: 8082
-      service_arena_refuge_domain: refuge.arena.thefirstspine.fr
-    app2:
-      ansible_host: 10.16.10.11
-      ansible_connection: ssh
-      ansible_user: root
-      ansible_ssh_pass: password
-      certbot_email: me@email.com,
+      certbot_email: me@email.com
+      # Service Matches
+      service_matches: true
+      service_matches_domain: matches.thefirstspine.fr
+      service_matches_mongo_host: 10.16.10.11
+      service_matches_private_key: "{{ lookup('file', '/volume/keys/matches-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_matches_bots_public_key: "{{ lookup('file', '/volume/keys/bots-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_matches_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_matches_rooms_public_key: "{{ lookup('file', '/volume/keys/rooms-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_matches_internal_port: 8082
+      # Service Auth
       service_auth: true
       service_auth_domain: auth.thefirstspine.fr
       service_auth_internal_port: 8081
@@ -37,18 +33,59 @@ apps:
       service_auth_secret_key: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       service_auth_smtp_transport: smtps://user:password@host:465 # Change that placeholder password - and encrypt it with Vault!
       service_auth_private_key: "{{ lookup('file', '/volume/keys/auth-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      # Service Bots
       service_bots: true
       service_bots_domain: bots.thefirstspine.fr
+      service_bots_private_key: "{{ lookup('file', '/volume/keys/bots-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      # Service Messaging
       service_messaging: true
       service_messaging_domain: messaging.thefirstspine.fr
+      service_messaging_private_key: "{{ lookup('file', '/volume/keys/messaging-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      # Service Rest
       service_rest: true
       service_rest_domain: rest.thefirstspine.fr
+      # Service Rooms
       service_rooms: true
       service_rooms_domain: rooms.thefirstspine.fr
+      service_rooms_pg_database: rooms
+      service_rooms_pg_host: 10.16.10.11
+      service_rooms_pg_port: 5432
+      service_rooms_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      service_rooms_pg_username: rooms
+      service_rooms_private_key: "{{ lookup('file', '/volume/keys/rooms-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      # Service Shop
       service_shop: true
       service_shop_domain: shop.thefirstspine.fr
+      service_shop_pg_database: shop
+      service_shop_pg_host: 10.16.10.11
+      service_shop_pg_port: 5432
+      service_shop_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      service_shop_pg_username: shop
+      service_shop_private_key: "{{ lookup('file', '/volume/keys/shop-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      # Service Calendar
       service_calendar: true
       service_calendar_domain: calendar.thefirstspine.fr
+      service_calendar_pg_database: calendar
+      service_calendar_pg_host: 10.16.10.11
+      service_calendar_pg_port: 5432
+      service_calendar_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      service_calendar_pg_username: calendar
+      # Service Website
+      service_website: true
+      service_website_domain: www.thefirstspine.fr
+      service_website_pg_database: website
+      service_website_pg_host: 10.16.10.11
+      service_website_pg_port: 5432
+      service_website_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      service_website_pg_username: website
+      # Service Solid Pancake
+      service_solid_pancake: true
+      service_solid_pancake_domain: solid-pancake.thefirstspine.fr
+      service_solid_pancake_pg_database: solid_pancake
+      service_solid_pancake_pg_host: 10.16.10.11
+      service_solid_pancake_pg_port: 5432
+      service_solid_pancake_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
+      service_solid_pancake_pg_username: solid_pancake
 
 # DATABASES GROUP
 # This group represents the servers that will acts as databases.
@@ -62,7 +99,6 @@ dbs:
       docker_psql_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       docker_psql_auth_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       docker_psql_calendar_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
-      docker_psql_drifters_tales_worlds_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       docker_psql_rooms_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       docker_psql_shop_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       docker_psql_solid_pancake_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
