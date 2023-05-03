@@ -35,4 +35,4 @@ jobs:
       -
         name: Deploy matches
         run: |
-          docker run --rm -i -v workspace/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml /volume/playbooks/deploy-matches.yaml
+          docker run --rm -i --mount type=bind,source=($PWD)/workspace/volume,target=/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml /volume/playbooks/deploy-matches.yaml
