@@ -14,26 +14,23 @@ jobs:
           repository: thefirstspine/ansible
           path: workspace
       -
-        name: Going to workspace
-        run: |
-          cd workspace
-      -
         name: Build Docker image
         uses: docker/build-push-action@v4
         with:
+          context: workspace
           push: false
           tags: thefirstspine/ansible:latest
       -
         name: Remove placeholder conf
         run: |
-          rm -r volume/conf
+          rm -r workspace/volume/conf
           ls -la
       -
         name: Clone secrets to conf
         uses: actions/checkout@v2
         with:
           repository: thefirstspine/ansible-secrets
-          path: volume/conf
+          path: workspace/volume/conf
       -
         name: Deploy matches
         run: |
