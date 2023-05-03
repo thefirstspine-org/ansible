@@ -8,10 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Clone repo
+        uses: actions/checkout@v2
+        with:
+          repository: thefirstspine/ansible
+          path: workspace
+      -
         name: Going to workspace
         run: |
-          ls -la
-          rm -r volume/conf
+          cd workspace
       -
         name: Build Docker image
         uses: docker/build-push-action@v4
