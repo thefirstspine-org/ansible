@@ -29,8 +29,9 @@ jobs:
         name: Clone secrets to conf
         uses: actions/checkout@v2
         with:
-          repository: thefirstspine/ansible-secrets
+          repository: ${{ secrets.SECRET_REPO_PATH }}
           path: workspace/volume/conf
+          token: ${{ secrets.SECRET_REPO_TOKEN }}
       -
         name: Deploy matches
         run: |
