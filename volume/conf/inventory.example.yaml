@@ -87,6 +87,10 @@ apps:
       service_website_pg_port: 5432
       service_website_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       service_website_pg_username: website
+      service_website_arena_public_key: "{{ lookup('file', '/volume/keys/arena-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_website_auth_public_key: "{{ lookup('file', '/volume/keys/auth-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_website_rooms_public_key: "{{ lookup('file', '/volume/keys/rooms-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_website_shop_public_key: "{{ lookup('file', '/volume/keys/shop-public.cert') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
       # Service Solid Pancake
       service_solid_pancake: true
       service_solid_pancake_domain: solid-pancake.thefirstspine.fr
