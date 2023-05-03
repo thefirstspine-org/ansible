@@ -3,7 +3,7 @@
 # Apps can be deployed on these servers.
 apps:
   hosts:
-    app1:
+    app:
       # Global config
       ansible_host: 10.16.10.11
       ansible_connection: ssh
@@ -67,6 +67,8 @@ apps:
       service_shop_pg_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       service_shop_pg_username: shop
       service_shop_private_key: "{{ lookup('file', '/volume/keys/shop-private.key') }}" # This need to be configured with tfs-certificate-authority package - and encrypt it with Vault!
+      service_shop_stripe_public_key: mypublickey
+      service_shop_stripe_private_key: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       # Service Calendar
       service_calendar: true
       service_calendar_domain: calendar.thefirstspine.fr
@@ -99,7 +101,7 @@ apps:
 # This group represents the servers that will acts as databases.
 dbs:
   hosts:
-    db1:
+    db:
       ansible_host: 10.16.10.11
       ansible_connection: ssh
       ansible_user: root
