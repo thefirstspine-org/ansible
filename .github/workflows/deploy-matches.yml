@@ -1,9 +1,7 @@
 name: deploy matches
 
 on:
-  push:
-    branches:
-      - 'nothing'
+  workflow_dispatch
 
 jobs:
   deploy:
