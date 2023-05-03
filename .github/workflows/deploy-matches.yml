@@ -1,0 +1,32 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - 'nothing'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Build Docker image
+        uses: docker/build-push-action@v4
+        with:
+          push: false
+          tags: thefirstspine/ansible:latest
+      -
+        name: Remove placeholder conf
+        run: |
+          rm -r scss
+          ls -la
+      -
+        name: Clone secrets to conf
+        uses: actions/checkout@v2
+        with:
+          repository: thefirstspine/ansible-secrets
+          path: volume/conf
+      -
+        name: Deploy matches
+        run: |
+          docker run --rm -i -v ./volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml /volume/playbooks/deploy-matches.yaml
