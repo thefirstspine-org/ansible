@@ -16,7 +16,7 @@ jobs:
       -
         name: Remove placeholder conf
         run: |
-          rm -r scss
+          rm -r volume/conf
           ls -la
       -
         name: Clone secrets to conf
