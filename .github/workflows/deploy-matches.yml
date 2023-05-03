@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Going to workspace
+        run: |
+          ls -la
+          rm -r volume/conf
+      -
         name: Build Docker image
         uses: docker/build-push-action@v4
         with:
