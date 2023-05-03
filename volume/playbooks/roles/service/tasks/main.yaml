@@ -71,3 +71,6 @@
 
 - name: Restart nginx
   command: systemctl restart nginx.service
+
+- name: Delete /var/www/{{ service_name }}
+  command: rm -rf /var/www/{{ service_name }}
