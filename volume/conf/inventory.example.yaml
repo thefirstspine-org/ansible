@@ -5,10 +5,9 @@ apps:
   hosts:
     app:
       # Global config
-      ansible_host: 10.16.10.11
+      ansible_host: user@10.16.10.11
       ansible_connection: ssh
-      ansible_user: root
-      ansible_ssh_pass: password
+      ansible_host_key_checking: false
       certbot_email: me@email.com
       # Service Matches
       service_matches: true
@@ -106,10 +105,9 @@ apps:
 dbs:
   hosts:
     db:
-      ansible_host: 10.16.10.11
+      ansible_host: user@10.16.10.11
       ansible_connection: ssh
-      ansible_user: root
-      ansible_ssh_pass: password
+      ansible_host_key_checking: false
       docker_psql_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       docker_psql_auth_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!
       docker_psql_calendar_password: thisissecret!sshhh # Change that placeholder password - and encrypt it with Vault!

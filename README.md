@@ -55,7 +55,7 @@ Comments:
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/provision-nodes.yaml
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/provision-nodes.yaml --ask-pass
 ```
 
 Comments:
@@ -69,7 +69,7 @@ Comments:
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deploy-{app}.yaml
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deploy-{app}.yaml --ask-pass
 ```
 
 `{app}` is one of the below app:
@@ -89,13 +89,7 @@ Comments:
 - `--ask-vault-pass` - ask for password
 - `-v {path}/volume:/volume` - volume
 - `-i /volume/conf/inventory.yaml` - the inventory
-- `ansible-playbook /volume/playbooks/provision-nodes.yaml` - launch the playbook located at `/playbooks/provision-nodes.yaml`
-
-## Troubleshooting
-
-### Host key verification failed.
-
-In order to disable host key checking in Ansible you should set the `ANSIBLE_HOST_KEY_CHECKING` environment variable to `False`. To do so, add `-e ANSIBLE_HOST_KEY_CHECKING=False` to the command.
+- `ansible-playbook /volume/playbooks/provision-nodes.yaml --ask-pass` - launch the playbook located at `/playbooks/provision-nodes.yaml` and ask for SSH password
 
 ## Used roles
 
