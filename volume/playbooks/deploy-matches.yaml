@@ -28,5 +28,5 @@
         port_nginx: "{{ service_matches_internal_port }}",
         domain: "{{ service_matches_domain }}",
         cerbot_email: "{{ certbot_email }}",
-        when: service_matches
+        when: service_matches|d('') == true
       }

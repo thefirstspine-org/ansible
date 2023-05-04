@@ -25,5 +25,5 @@
         port_nginx: "{{ service_auth_internal_port }}",
         domain: "{{ service_auth_domain }}",
         cerbot_email: "{{ certbot_email }}",
-        when: service_auth
+        when: service_auth|d('') == true
       }
