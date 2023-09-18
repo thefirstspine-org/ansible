@@ -43,7 +43,7 @@
   docker_container:
     name: "{{ service_name }}_container"
     image: "{{ service_name }}_image"
-    env: "{{ docker_env }}""
+    env: "{{ docker_env }}"
     published_ports:
       - "{{ port_nginx }}:{{ port_container }}"
 
