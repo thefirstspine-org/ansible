@@ -15,7 +15,7 @@
 
 - name: Ensure GitHub deploy key is present on the server.
   copy:
-    src: "{{ deploy_private_key }}"
+    src: {{ deploy_private_key }}
     dest: /var/www/.ssh/deploy_key
     mode: 0600
     owner: www-data
@@ -27,7 +27,7 @@
 
 - name: Clone repository {{ repository }} to /var/www/{{ service_name }}
   git:
-    repo: "{{ repository }}"
+    repo: {{ repository }}
     dest: /var/www/{{ service_name }}
     accept_hostkey: yes
     key_file: /var/www/.ssh/deploy_key
@@ -35,17 +35,17 @@
 
 - name: Build image {{ service_name }}_image
   docker_image:
-    name: "{{ service_name }}_image"
-    path: "/var/www/{{ service_name }}"
+    name: {{ service_name }}_image
+    path: /var/www/{{ service_name }}
     state: present
 
 - name: Run image {{ service_name }}_image under container {{ service_name }}_container
   docker_container:
-    name: "{{ service_name }}_container"
-    image: "{{ service_name }}_image"
-    env: "{{ docker_env }}"
+    name: {{ service_name }}_container
+    image: {{ service_name }}_image
+    env: {{ docker_env }}"
     published_ports:
-      - "{{ port_nginx }}:{{ port_container }}"
+      - {{ port_nginx }}:{{ port_container }}
 
 - name: Register nginx block {{ domain }} to proxy through http://localhost:{{ port_nginx }}/
   copy:
