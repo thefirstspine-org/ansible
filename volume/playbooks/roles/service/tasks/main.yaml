@@ -15,7 +15,7 @@
 
 - name: Ensure GitHub deploy key is present on the server.
   copy:
-    src: {{ deploy_private_key }}
+    src: "{{ deploy_private_key }}"
     dest: /var/www/.ssh/deploy_key
     mode: 0600
     owner: www-data
