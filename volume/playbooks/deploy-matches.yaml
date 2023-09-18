@@ -7,7 +7,7 @@
         role: "service",
         service_name: "matches",
         repository: "git@github.com:thefirstspine/arena.git",
-        deploy_private_key: "{{ deploy_private_key }}",
+        deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
             BOTS_URL: "https://{{ service_bots_domain }}",
             AUTH_URL: "https://{{ service_auth_domain }}",
