@@ -25,4 +25,4 @@ add-apt-repository \
 # Install docker engine
 
 apt-get update;
-apt-get -y install docker-ce docker-ce-cli containerd.io;
+apt-get -y install docker-ce docker-ce-cli containerd.io apt python3-docker;
