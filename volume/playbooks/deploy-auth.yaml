@@ -7,7 +7,7 @@
         role: "service",
         service_name: "auth",
         repository: "git@github.com:thefirstspine/auth.git",
-        deploy_private_key: "/volume/keys/id",
+        deploy_private_key: "{{ deploy_private_key }}",
         docker_env: {
             FB_APP_CLIENT_ID: "'{{ service_auth_fb_app_client_id }}'", # Facebook Client ID used for login with Facebook
             FB_APP_CLIENT_SECRET: "{{ service_auth_fb_app_client_secret }}", # Facebook Client Secret used for login with Facebook
