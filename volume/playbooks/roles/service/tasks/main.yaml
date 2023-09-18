@@ -27,7 +27,7 @@
 
 - name: Clone repository {{ repository }} to /var/www/{{ service_name }}
   git:
-    repo: {{ repository }}
+    repo: "{{ repository }}"
     dest: "/var/www/{{ service_name }}"
     accept_hostkey: yes
     key_file: /var/www/.ssh/deploy_key
