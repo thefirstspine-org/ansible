@@ -7,7 +7,6 @@
         role: "service",
         service_name: "solid-pancake",
         repository: "git@github.com:thefirstspine/solid-pancake.git",
-        deploy_private_key: "/volume/keys/id",
         docker_env: {
             PG_DATABASE: "{{ service_solid_pancake_pg_database }}", # PostgreSQL database name
             PG_HOST: "{{ service_solid_pancake_pg_host }}", # PostgreSQL database host
