@@ -28,24 +28,24 @@
 - name: Clone repository {{ repository }} to /var/www/{{ service_name }}
   git:
     repo: {{ repository }}
-    dest: /var/www/{{ service_name }}
+    dest: "/var/www/{{ service_name }}"
     accept_hostkey: yes
     key_file: /var/www/.ssh/deploy_key
   become_user: www-data
 
 - name: Build image {{ service_name }}_image
   docker_image:
-    name: {{ service_name }}_image
-    path: /var/www/{{ service_name }}
+    name: "{{ service_name }}_image"
+    path: "/var/www/{{ service_name }}"
     state: present
 
 - name: Run image {{ service_name }}_image under container {{ service_name }}_container
   docker_container:
-    name: {{ service_name }}_container
-    image: {{ service_name }}_image
-    env: {{ docker_env }}"
+    name: "{{ service_name }}_container"
+    image: "{{ service_name }}_image"
+    env: "{{ docker_env }}""
     published_ports:
-      - {{ port_nginx }}:{{ port_container }}
+      - "{{ port_nginx }}:{{ port_container }}"
 
 - name: Register nginx block {{ domain }} to proxy through http://localhost:{{ port_nginx }}/
   copy:
@@ -67,10 +67,10 @@
     group: www-data
 
 - name: Call certbot with email {{ cerbot_email }}
-  command: certbot --nginx --email {{ cerbot_email }} -d {{ domain }} --agree-tos --non-interactive --redirect
+  command: "certbot --nginx --email {{ cerbot_email }} -d {{ domain }} --agree-tos --non-interactive --redirect"
 
 - name: Restart nginx
   command: systemctl restart nginx.service
 
 - name: Delete /var/www/{{ service_name }}
-  command: rm -rf /var/www/{{ service_name }}
+  command: "rm -rf /var/www/{{ service_name }}"
