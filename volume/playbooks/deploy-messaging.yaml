@@ -1,0 +1,21 @@
+# This playbook deploys the auth app
+
+- hosts: apps
+
+  roles:
+    - {
+        role: "service",
+        service_name: "messaging",
+        repository: "git@github.com:thefirstspine/messaging.git",
+        deploy_private_key: "{{ deployment_private_key }}",
+        docker_env: {
+            AUTH_URL: "https://{{ service_auth_domain }}",
+            PRIVATE_KEY: "{{ service_messaging_private_key }}", # Private key to validate protected incoming requests
+            PORT: "8080", # The port where to serve the app
+        },
+        port_container: "8080",
+        port_nginx: "{{ service_messaging_internal_port }}",
+        domain: "{{ service_messaging_domain }}",
+        cerbot_email: "{{ certbot_email }}",
+        when: service_messaging|d('') == true
+      }

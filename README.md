@@ -89,7 +89,6 @@ Comments:
 - `--ask-vault-pass` - ask for password
 - `-v {path}/volume:/volume` - volume
 - `-i /volume/conf/inventory.yaml` - the inventory
-- `ansible-playbook /volume/playbooks/provision-nodes.yaml --ask-pass` - launch the playbook located at `/playbooks/provision-nodes.yaml` and ask for SSH password
 
 ## Used roles
 
