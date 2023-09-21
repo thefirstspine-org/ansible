@@ -1,0 +1,35 @@
+# This playbook deploys the rest app
+
+- hosts: apps
+
+  roles:
+    - {
+        role: "service",
+        service_name: "website",
+        repository: "git@github.com:thefirstspine/website.git",
+        deploy_private_key: "{{ deployment_private_key }}",
+        docker_env: {
+            WEBSITE_URL: "https://{{ service_website_domain }}",
+            ARENA_REALMS_URL: "https://{realm}.{{ service_arena_domain }}",
+            REST_URL: "https://{{ service_rest_domain }}",
+            AUTH_URL: "https://{{ service_auth_domain }}",
+            CALENDAR_URL: "https://{{ service_calendar_domain }}",
+            SOLID_PANCAKE_URL: "https://{{ service_solid_pancake_domain }}",
+            SHOP_URL: "https://{{ service_shop_domain }}",
+            SMTP_TRANSPORT: "{{ service_website_smtp_transport }}",
+            REPORT_TO: "{{ service_website_report_to }}",
+            ADMINS: "{{ service_website_admins }}",
+            PG_DATABASE: "{{ service_website_pg_database }}",
+            PG_HOST: "{{ service_website_pg_host }}",
+            PG_PORT: "{{ service_website_pg_port }}",
+            PG_PASSWORD: "{{ service_website_pg_password }}",
+            PG_USERNAME: "{{ service_website_pg_username }}",
+            SECRET_CODES: "{{ service_website_secret_codes }}",
+            PORT: "8080", # The port where to serve the app
+        },
+        port_container: "8080",
+        port_nginx: "{{ service_website_internal_port }}",
+        domain: "{{ service_website_domain }}",
+        cerbot_email: "{{ certbot_email }}",
+        when: service_website|d('') == true
+      }
