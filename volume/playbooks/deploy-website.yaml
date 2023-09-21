@@ -25,9 +25,9 @@
             PG_PASSWORD: "{{ service_website_pg_password }}",
             PG_USERNAME: "{{ service_website_pg_username }}",
             SECRET_CODES: "{{ service_website_secret_codes }}",
-            PORT: "8080", # The port where to serve the app
+            PORT: "1337", # The port where to serve the app
         },
-        port_container: "8080",
+        port_container: "1337",
         port_nginx: "{{ service_website_internal_port }}",
         domain: "{{ service_website_domain }}",
         cerbot_email: "{{ certbot_email }}",
