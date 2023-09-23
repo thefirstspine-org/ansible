@@ -1,0 +1,21 @@
+# This playbook deploys the bots app
+
+- hosts: apps
+
+  roles:
+    - {
+        role: "service",
+        service_name: "bots",
+        repository: "git@github.com:thefirstspine/bots.git",
+        deploy_private_key: "{{ deployment_private_key }}",
+        docker_env: {
+            PORT: "8080", # The port where to serve the app
+            CREDENTIALS: "{{ service_bots_credentials }}",
+            PRIVATE_KEY: "{{ service_bots_private_key }}",
+        },
+        port_container: "8080",
+        port_nginx: "{{ service_bots_internal_port }}",
+        domain: "{{ service_bots_domain }}",
+        cerbot_email: "{{ certbot_email }}",
+        when: service_bots|d('') == true
+      }
