@@ -1,0 +1,21 @@
+name: Deploy app
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Build Docker image
+        run: |
+          docker build -t thefirstspine/ansible .
+      - name: Run thefirstspine/ansible image
+        run: |
+          docker run --rm -v ./volume:/volume thefirstspine/ansible ansible-playbook --version
