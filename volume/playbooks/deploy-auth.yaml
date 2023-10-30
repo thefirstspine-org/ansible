@@ -9,11 +9,11 @@
         repository: "git@github.com:thefirstspine/auth.git",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
-            FB_APP_CLIENT_ID: "'{{ service_auth_fb_app_client_id }}'", # Facebook Client ID used for login with Facebook
+            FB_APP_CLIENT_ID: "{{ service_auth_fb_app_client_id }}", # Facebook Client ID used for login with Facebook
             FB_APP_CLIENT_SECRET: "{{ service_auth_fb_app_client_secret }}", # Facebook Client Secret used for login with Facebook
             PG_DATABASE: "{{ service_auth_pg_database }}", # PostgreSQL database name
             PG_HOST: "{{ service_auth_pg_host }}", # PostgreSQL database host
-            PG_PORT: "'{{ service_auth_pg_port }}'", # PostgreSQL database port
+            PG_PORT: "{{ service_auth_pg_port }}", # PostgreSQL database port
             PG_PASSWORD: "{{ service_auth_pg_password }}", # PostgreSQL password
             PG_USERNAME: "{{ service_auth_pg_username }}", # PostgreSQL username
             SECRET_KEY: "{{ service_auth_secret_key }}", # The secret key used to sign JWT
