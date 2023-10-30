@@ -38,13 +38,16 @@
     name: "{{ service_name }}_image"
     path: "/var/www/{{ service_name }}"
     state: present
+    force: true
+    rm: true
 
 - name: Run image {{ service_name }}_image under container {{ service_name }}_container
   docker_container:
     name: "{{ service_name }}_container"
     image: "{{ service_name }}_image"
     env: "{{ docker_env }}"
-    state: present
+    state: started
+    recreate: true
     published_ports:
       - "{{ port_nginx }}:{{ port_container }}"
 
