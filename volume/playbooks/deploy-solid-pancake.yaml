@@ -11,7 +11,7 @@
         docker_env: {
             PG_DATABASE: "{{ service_solid_pancake_pg_database }}", # PostgreSQL database name
             PG_HOST: "{{ service_solid_pancake_pg_host }}", # PostgreSQL database host
-            PG_PORT: "{{ service_solid_pancake_pg_port }}", # PostgreSQL database port
+            PG_PORT: "{{ service_solid_pancake_pg_port | int }}", # PostgreSQL database port
             PG_PASSWORD: "{{ service_solid_pancake_pg_password }}", # PostgreSQL password
             PG_USERNAME: "{{ service_solid_pancake_pg_username }}", # PostgreSQL username
             PORT: "8080", # The port where to serve the app

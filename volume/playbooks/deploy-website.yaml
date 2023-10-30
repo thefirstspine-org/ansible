@@ -21,7 +21,7 @@
             ADMINS: "{{ service_website_admins }}",
             PG_DATABASE: "{{ service_website_pg_database }}",
             PG_HOST: "{{ service_website_pg_host }}",
-            PG_PORT: "{{ service_website_pg_port }}",
+            PG_PORT: "{{ service_website_pg_port | int }}",
             PG_PASSWORD: "{{ service_website_pg_password }}",
             PG_USERNAME: "{{ service_website_pg_username }}",
             SECRET_CODES: "{{ service_website_secret_codes }}",
