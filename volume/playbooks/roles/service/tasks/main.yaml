@@ -44,8 +44,7 @@
     name: "{{ service_name }}_container"
     image: "{{ service_name }}_image"
     env: "{{ docker_env }}"
-    recreate: true
-    state: "present"
+    state: present
     published_ports:
       - "{{ port_nginx }}:{{ port_container }}"
 
