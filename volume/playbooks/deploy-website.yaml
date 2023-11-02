@@ -25,7 +25,7 @@
             PG_PASSWORD: "{{ service_website_pg_password }}",
             PG_USERNAME: "{{ service_website_pg_username }}",
             SECRET_CODES: "{{ service_website_secret_codes }}",
-            SESSION_SECRET: "{{ service_website_session_secret }}",
+            SESSION_SECRET: "{{ service_website_session_secret | int }}",
             PORT: "1337", # The port where to serve the app
         },
         port_container: "1337",
