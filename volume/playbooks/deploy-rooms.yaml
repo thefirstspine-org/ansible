@@ -19,6 +19,8 @@
             MESSAGING_PUBLIC_KEY: "{{ service_rooms_messaging_public_key }}",
             SUBJECTS: "{{ service_rooms_subjects }}",
             PORT: "8080", # The port where to serve the app
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
         port_container: "8080",
         port_nginx: "{{ service_rooms_internal_port }}",

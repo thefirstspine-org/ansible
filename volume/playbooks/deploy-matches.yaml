@@ -23,6 +23,8 @@
             ROOMS_PUBLIC_KEY: "{{ service_matches_rooms_public_key }}", # Public key to interact with protected service
             SHOP_PUBLIC_KEY: "{{ service_matches_shop_public_key }}", # Public key to interact with protected service
             PORT: "8080", # The port where to serve the app
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
         port_container: "8080",
         port_nginx: "{{ service_matches_internal_port }}",

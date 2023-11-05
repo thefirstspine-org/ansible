@@ -12,6 +12,8 @@
             AUTH_URL: "https://{{ service_auth_domain }}",
             PRIVATE_KEY: "{{ service_messaging_private_key }}", # Private key to validate protected incoming requests
             PORT: "8080", # The port where to serve the app
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
         port_container: "8080",
         port_nginx: "{{ service_messaging_internal_port }}",

@@ -27,6 +27,8 @@
             SECRET_CODES: "{{ service_website_secret_codes }}",
             SESSION_SECRET: "{{ service_website_session_secret | int }}",
             PORT: "1337", # The port where to serve the app
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
         port_container: "1337",
         port_nginx: "{{ service_website_internal_port }}",

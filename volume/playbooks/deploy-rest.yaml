@@ -10,6 +10,8 @@
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
             PORT: "8080", # The port where to serve the app
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
         port_container: "8080",
         port_nginx: "{{ service_rest_internal_port }}",

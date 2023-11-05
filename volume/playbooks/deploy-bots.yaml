@@ -12,6 +12,8 @@
             PORT: "8080", # The port where to serve the app
             CREDENTIALS: "{{ service_bots_credentials }}",
             PRIVATE_KEY: "{{ service_bots_private_key }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
         port_container: "8080",
         port_nginx: "{{ service_bots_internal_port }}",
