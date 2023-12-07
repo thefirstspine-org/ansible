@@ -15,7 +15,7 @@
             PG_PORT: "{{ service_rooms_pg_port | int }}", # PostgreSQL database port
             PG_PASSWORD: "{{ service_rooms_pg_password }}", # PostgreSQL password
             PG_USERNAME: "{{ service_rooms_pg_username }}", # PostgreSQL username
-            SECRET_KEY: "{{ service_rooms_private_key }}", # The secret key used to sign JWT
+            PRIVATE_KEY: "{{ service_rooms_private_key }}", # The secret key used to sign JWT
             MESSAGING_PUBLIC_KEY: "{{ service_rooms_messaging_public_key }}",
             SUBJECTS: "{{ service_rooms_subjects }}",
             PORT: "8080", # The port where to serve the app
