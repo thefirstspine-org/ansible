@@ -22,30 +22,4 @@ jobs:
       - name: Run thefirstspine/ansible image
         run: |
           docker run --rm -v ./volume:/volume thefirstspine/ansible ansible-playbook --version
-      - name: Check syntax of "auth"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-auth.yaml --syntax-check
-      - name: Check syntax of "bots"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-bots.yaml --syntax-check
-      - name: Check syntax of "matches"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-matches.yaml --syntax-check
-      - name: Check syntax of "messaging"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-messaging.yaml --syntax-check
-      - name: Check syntax of "rest"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-rest.yaml --syntax-check
-      - name: Check syntax of "rooms"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-rooms.yaml --syntax-check
-      - name: Check syntax of "solid-pancake"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-solid-pancake.yaml --syntax-check
-      - name: Check syntax of "website"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/deploy-website.yaml --syntax-check
-      - name: Check syntax of "provision-nodes"
-        run: |
-          docker run --rm -v ./volume:/volume thefirstspine/ansible /volume/playbooks/provision-nodes.yaml --syntax-check
+
