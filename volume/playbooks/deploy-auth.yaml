@@ -7,6 +7,7 @@
         role: "service",
         service_name: "auth",
         repository: "git@github.com:thefirstspine/auth.git",
+        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
             FB_APP_CLIENT_ID: "{{ service_auth_fb_app_client_id | int }}", # Facebook Client ID used for login with Facebook

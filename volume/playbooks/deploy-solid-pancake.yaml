@@ -7,6 +7,7 @@
         role: "service",
         service_name: "solid-pancake",
         repository: "git@github.com:thefirstspine/solid-pancake.git",
+        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
             PG_DATABASE: "{{ service_solid_pancake_pg_database }}", # PostgreSQL database name

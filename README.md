@@ -20,6 +20,18 @@ Then, you should test your container.
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook --version
 ```
 
+```
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-auth.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-bots.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-matches.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-messaging.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-rest.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-rooms.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-solid-pancake.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-website.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/provision-node.yaml --syntax-check
+```
+
 Comments:
 - `ansible-playbook --version` - get the current version
 
@@ -69,7 +81,7 @@ Comments:
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/deploy-{app}.yaml --ask-pass
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml [-e BRANCH={branch-name}] --ask-vault-pass /volume/playbooks/deploy-{app}.yaml --ask-pass
 ```
 
 `{app}` is one of the below app:
@@ -86,6 +98,7 @@ docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbo
 - website
 
 Comments:
+- `-e BRANCH={branch-name}` - the branch to deploy
 - `--ask-vault-pass` - ask for password
 - `-v {path}/volume:/volume` - volume
 - `-i /volume/conf/inventory.yaml` - the inventory

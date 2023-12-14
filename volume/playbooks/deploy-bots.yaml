@@ -7,6 +7,7 @@
         role: "service",
         service_name: "bots",
         repository: "git@github.com:thefirstspine/bots.git",
+        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
             PORT: "8080", # The port where to serve the app

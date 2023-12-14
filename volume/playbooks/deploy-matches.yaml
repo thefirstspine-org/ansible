@@ -7,6 +7,7 @@
         role: "service",
         service_name: "matches",
         repository: "git@github.com:thefirstspine/matches.git",
+        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
             BOTS_URL: "https://{{ service_bots_domain }}",
