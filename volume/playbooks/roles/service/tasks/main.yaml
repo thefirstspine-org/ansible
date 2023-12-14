@@ -31,6 +31,7 @@
     dest: "/var/www/{{ service_name }}"
     accept_hostkey: yes
     key_file: /var/www/.ssh/deploy_key
+    version: "{{ branch }}"
   become_user: www-data
 
 - name: Build image {{ service_name }}_image
