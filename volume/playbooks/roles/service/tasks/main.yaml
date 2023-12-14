@@ -25,7 +25,7 @@
 - name: Ensure setfacl support is present.
   package: name=acl
 
-- name: Clone repository {{ repository }} to /var/www/{{ service_name }}
+- name: Clone repository {{ repository }}:{{ branch }} to /var/www/{{ service_name }}
   git:
     repo: "{{ repository }}"
     dest: "/var/www/{{ service_name }}"
