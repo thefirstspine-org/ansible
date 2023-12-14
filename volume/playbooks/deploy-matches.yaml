@@ -1,6 +1,6 @@
 # This playbook deploys the matches app
 
-- hosts: apps
+- hosts: app
 
   roles:
     - {
@@ -30,6 +30,5 @@
         port_container: "8080",
         port_nginx: "{{ service_matches_internal_port }}",
         domain: "{{ service_matches_domain }}",
-        cerbot_email: "{{ certbot_email }}",
-        when: service_matches|d('') == true
+        cerbot_email: "{{ certbot_email }}"
       }
