@@ -20,11 +20,11 @@
             SECRET_KEY: "{{ service_auth_secret_key }}", # The secret key used to sign JWT
             SMTP_TRANSPORT: "{{ service_auth_smtp_transport }}", # Smtp transport used to send emails
             PRIVATE_KEY: "{{ service_auth_private_key }}", # Private key to validate protected incoming requests
-            PORT: "8080", # The port where to serve the app
+            PORT: "{{ service_auth_external_port }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "8080",
+        port_container: "{{ service_auth_external_port }}",
         port_nginx: "{{ service_auth_internal_port }}",
         domain: "{{ service_auth_domain }}",
         cerbot_email: "{{ certbot_email }}",
