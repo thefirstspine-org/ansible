@@ -1,0 +1,30 @@
+# This playbook deploys the shop app
+
+- hosts: apps
+
+  roles:
+    - {
+        role: "service",
+        service_name: "shop",
+        repository: "git@github.com:thefirstspine/shop.git",
+        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
+        deploy_private_key: "{{ deployment_private_key }}",
+        docker_env: {
+            PG_DATABASE: "{{ service_shop_pg_database }}", # PostgreSQL database name
+            PG_HOST: "{{ service_shop_pg_host }}", # PostgreSQL database host
+            PG_PORT: "{{ service_shop_pg_port | int }}", # PostgreSQL database port
+            PG_PASSWORD: "{{ service_shop_pg_password }}", # PostgreSQL password
+            PG_USERNAME: "{{ service_shop_pg_username }}", # PostgreSQL username
+            PRIVATE_KEY: "{{ service_shop_private_key }}", # Private key to validate protected incoming requests
+            PORT: "{{ service_shop_external_port }}", # The port where to serve the app
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            STRIPE_PRIVATE_KEY=: "{{ service_shop_stripe_private_key }}",
+            STRIPE_PUBLIC_KEY=: "{{ service_shop_stripe_public_key }}",
+        },
+        port_container: "{{ service_shop_external_port }}",
+        port_nginx: "{{ service_shop_internal_port }}",
+        domain: "{{ service_shop_domain }}",
+        cerbot_email: "{{ certbot_email }}",
+        when: service_shop|d('') == true
+      }
