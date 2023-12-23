@@ -23,11 +23,11 @@
             MESSAGING_PUBLIC_KEY: "{{ service_matches_messaging_public_key }}", # Public key to interact with protected service
             ROOMS_PUBLIC_KEY: "{{ service_matches_rooms_public_key }}", # Public key to interact with protected service
             SHOP_PUBLIC_KEY: "{{ service_matches_shop_public_key }}", # Public key to interact with protected service
-            PORT: "{{ service_matches_external_port }}", # The port where to serve the app
+            PORT: "{{ service_matches_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_matches_external_port }}",
+        port_container: "{{ service_matches_external_port | int }}",
         port_nginx: "{{ service_matches_internal_port }}",
         domain: "{{ service_matches_domain }}",
         cerbot_email: "{{ certbot_email }}",
