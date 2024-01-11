@@ -27,7 +27,7 @@
             PG_USERNAME: "{{ service_website_pg_username }}",
             SECRET_CODES: "{{ service_website_secret_codes }}",
             SESSION_SECRET: "{{ service_website_session_secret | int }}",
-            PORT: "{{ service_website_external_port }}", # The port where to serve the app
+            PORT: "{{ service_website_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
