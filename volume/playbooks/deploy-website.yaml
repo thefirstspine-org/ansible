@@ -31,7 +31,7 @@
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_website_external_port }}",
+        port_container: "{{ service_website_external_port | int }}",
         port_nginx: "{{ service_website_internal_port }}",
         domain: "{{ service_website_domain }}",
         cerbot_email: "{{ certbot_email }}",
