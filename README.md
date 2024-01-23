@@ -89,12 +89,11 @@ docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbo
 - auth
 - bots
 - calendar
-- drifters_tales_worlds
 - messaging
 - game-assets
 - rooms
 - shop
-- solid_pancake
+- solid-pancake
 - website
 
 Comments:
