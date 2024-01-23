@@ -67,7 +67,7 @@ Comments:
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/provision-nodes.yaml --ask-pass
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml --ask-vault-pass /volume/playbooks/provision-nodes.yaml
 ```
 
 Comments:
@@ -81,7 +81,7 @@ Comments:
 To provision the nodes you should launch the `ansible-playbook` command.
 
 ```
-docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml [-e BRANCH={branch-name}] --ask-vault-pass /volume/playbooks/deploy-{app}.yaml --ask-pass
+docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbook -i /volume/conf/inventory.yaml [-e BRANCH={branch-name}] --ask-vault-pass /volume/playbooks/deploy-{app}.yaml
 ```
 
 `{app}` is one of the below app:
