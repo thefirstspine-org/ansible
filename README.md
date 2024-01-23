@@ -25,7 +25,7 @@ docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook 
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-bots.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-matches.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-messaging.yaml --syntax-check
-docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-rest.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-game-assets.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-rooms.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-solid-pancake.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-website.yaml --syntax-check
@@ -91,7 +91,7 @@ docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbo
 - calendar
 - drifters_tales_worlds
 - messaging
-- rest
+- game-assets
 - rooms
 - shop
 - solid_pancake

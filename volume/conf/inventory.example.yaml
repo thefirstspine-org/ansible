@@ -45,11 +45,11 @@ apps:
       service_messaging_internal_port: 8084
       service_messaging_external_port: 8084
       service_messaging_private_key: "{{ lookup('file', '/volume/keys/messaging-private.key') }}"
-      # Service Rest
-      service_rest: true
-      service_rest_domain: localhost:8085
-      service_rest_internal_port: 8085
-      service_rest_external_port: 8085
+      # Service Game Assets
+      service_game_assets: true
+      service_game_assets_domain: localhost:8085
+      service_game_assets_internal_port: 8085
+      service_game_assets_external_port: 8085
       # Service Rooms
       service_rooms: true
       service_rooms_domain: localhost:8086
