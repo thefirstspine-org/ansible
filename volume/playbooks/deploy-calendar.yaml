@@ -17,11 +17,11 @@
             PG_PASSWORD: "{{ service_calendar_pg_password }}", # PostgreSQL password
             PG_USERNAME: "{{ service_calendar_pg_username }}", # PostgreSQL username
             PRIVATE_KEY: "{{ service_calendar_private_key }}", # The secret key used to sign JWT
-            PORT: "{{ service_calendar_external_port }}", # The port where to serve the app
+            PORT: "{{ service_calendar_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_calendar_external_port }}",
+        port_container: "{{ service_calendar_external_port | int }}",
         port_nginx: "{{ service_calendar_internal_port }}",
         domain: "{{ service_calendar_domain }}",
         cerbot_email: "{{ certbot_email }}",

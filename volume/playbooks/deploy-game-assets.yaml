@@ -10,11 +10,11 @@
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
-            PORT: "{{ service_game_assets_external_port }}", # The port where to serve the app
+            PORT: "{{ service_game_assets_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_game_assets_external_port }}",
+        port_container: "{{ service_game_assets_external_port | int }}",
         port_nginx: "{{ service_game_assets_internal_port }}",
         domain: "{{ service_game_assets_domain }}",
         cerbot_email: "{{ certbot_email }}",

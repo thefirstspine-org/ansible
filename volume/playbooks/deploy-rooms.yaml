@@ -19,11 +19,11 @@
             PRIVATE_KEY: "{{ service_rooms_private_key }}", # The secret key used to sign JWT
             MESSAGING_PUBLIC_KEY: "{{ service_rooms_messaging_public_key }}",
             SUBJECTS: "{{ service_rooms_subjects }}",
-            PORT: "{{ service_rooms_external_port }}", # The port where to serve the app
+            PORT: "{{ service_rooms_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_rooms_external_port }}",
+        port_container: "{{ service_rooms_external_port | int }}",
         port_nginx: "{{ service_rooms_internal_port }}",
         domain: "{{ service_rooms_domain }}",
         cerbot_email: "{{ certbot_email }}",

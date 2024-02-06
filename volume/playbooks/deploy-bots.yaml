@@ -10,13 +10,13 @@
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
-            PORT: "{{ service_bots_external_port }}", # The port where to serve the app
+            PORT: "{{ service_bots_external_port | int }}", # The port where to serve the app
             CREDENTIALS: "{{ service_bots_credentials }}",
             PRIVATE_KEY: "{{ service_bots_private_key }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_bots_external_port }}",
+        port_container: "{{ service_bots_external_port | int }}",
         port_nginx: "{{ service_bots_internal_port }}",
         domain: "{{ service_bots_domain }}",
         cerbot_email: "{{ certbot_email }}",

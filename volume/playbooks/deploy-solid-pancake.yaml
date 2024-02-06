@@ -15,11 +15,11 @@
             PG_PORT: "{{ service_solid_pancake_pg_port | int }}", # PostgreSQL database port
             PG_PASSWORD: "{{ service_solid_pancake_pg_password }}", # PostgreSQL password
             PG_USERNAME: "{{ service_solid_pancake_pg_username }}", # PostgreSQL username
-            PORT: "{{ service_solid_pancake_external_port }}", # The port where to serve the app
+            PORT: "{{ service_solid_pancake_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_solid_pancake_external_port }}",
+        port_container: "{{ service_solid_pancake_external_port | int }}",
         port_nginx: "{{ service_solid_pancake_internal_port }}",
         domain: "{{ service_solid_pancake_domain }}",
         cerbot_email: "{{ certbot_email }}",
