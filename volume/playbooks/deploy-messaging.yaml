@@ -12,11 +12,11 @@
         docker_env: {
             AUTH_URL: "https://{{ service_auth_domain }}",
             PRIVATE_KEY: "{{ service_messaging_private_key }}", # Private key to validate protected incoming requests
-            PORT: "{{ service_messaging_external_port }}", # The port where to serve the app
+            PORT: "{{ service_messaging_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
         },
-        port_container: "{{ service_messaging_external_port }}",
+        port_container: "{{ service_messaging_external_port | int }}",
         port_nginx: "{{ service_messaging_internal_port }}",
         domain: "{{ service_messaging_domain }}",
         cerbot_email: "{{ certbot_email }}",
