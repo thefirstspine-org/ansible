@@ -18,6 +18,7 @@
             PORT: "{{ service_solid_pancake_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            SOLID_PANCAKE_URL: "https://{{ service_solid_pancake_domain }}",
         },
         port_container: "{{ service_solid_pancake_external_port | int }}",
         port_nginx: "{{ service_solid_pancake_internal_port }}",
