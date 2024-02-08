@@ -14,7 +14,7 @@
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             REPOSITORIES: "PostgreSQL",
-            CAPPED_POWER: 30,
+            CAPPED_POWER: "30",
             SHOP_PUBLIC_KEY: "{{ service_arena_shop_public_key }}",
         },
         port_container: "{{ service_arena_external_port | int }}",
