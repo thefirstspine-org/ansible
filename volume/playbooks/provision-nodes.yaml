@@ -44,3 +44,7 @@
       database: website
       user: website
       password: "{{ docker_psql_website_password }}"
+    - role: pgsql-database
+      database: arena
+      user: arena
+      password: "{{ docker_psql_arena_password }}"
