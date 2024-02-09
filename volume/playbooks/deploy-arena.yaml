@@ -16,6 +16,9 @@
             REPOSITORIES: "PostgreSQL",
             CAPPED_POWER: "30",
             SHOP_PUBLIC_KEY: "{{ service_arena_shop_public_key }}",
+            SHOP_SERVICE_URL: "https://{{ service_shop_domain }}",
+            ARENA_SERVICE_URL: "https://{{ service_arena_domain }}",
+            MATCHES_SERVICE_URL: "https://{{ service_matches_domain }}"
         },
         port_container: "{{ service_arena_external_port | int }}",
         port_nginx: "{{ service_arena_internal_port | int }}",
