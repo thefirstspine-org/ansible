@@ -8,10 +8,12 @@
   vars:
     certbot_auto_renew: false
   roles:
-  - nginx
-  - certbot
-  - certbot-nginx
-  - docker
+  - role: nginx
+  - role: certbot
+  - role: certbot-nginx
+  - role: docker
+  - role: datadog
+    dd_api_key: "{{ dd_api_key }}"
 
 # Provision database servers
 - hosts: dbs
