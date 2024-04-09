@@ -16,9 +16,10 @@
             PG_PASSWORD: "{{ service_solid_pancake_pg_password }}", # PostgreSQL password
             PG_USERNAME: "{{ service_solid_pancake_pg_username }}", # PostgreSQL username
             PORT: "{{ service_solid_pancake_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             SOLID_PANCAKE_URL: "https://{{ service_solid_pancake_domain }}",
+            LOGS_DD_API_KEY: "{{ dd_api_key }}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH')|default('master', True) == 'master' %}prod{% else %}dev{% endif %}",
+            LOGS_DD_SERVICE: "solid-pancake",
         },
         port_container: "{{ service_solid_pancake_external_port | int }}",
         port_nginx: "{{ service_solid_pancake_internal_port }}",
