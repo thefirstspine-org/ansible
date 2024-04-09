@@ -13,8 +13,9 @@
             PORT: "{{ service_bots_external_port | int }}", # The port where to serve the app
             CREDENTIALS: "{{ service_bots_credentials }}",
             PRIVATE_KEY: "{{ service_bots_private_key }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_DD_API_KEY: "{{ dd_api_key }}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH')|default('master', True) == 'master' %}prod{% else %}dev{% endif %}",
+            LOGS_DD_SERVICE: "bots",
         },
         port_container: "{{ service_bots_external_port | int }}",
         port_nginx: "{{ service_bots_internal_port }}",

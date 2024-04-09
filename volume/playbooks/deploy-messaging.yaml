@@ -13,8 +13,9 @@
             AUTH_URL: "https://{{ service_auth_domain }}",
             PRIVATE_KEY: "{{ service_messaging_private_key }}", # Private key to validate protected incoming requests
             PORT: "{{ service_messaging_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_DD_API_KEY: "{{ dd_api_key }}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH')|default('master', True) == 'master' %}prod{% else %}dev{% endif %}",
+            LOGS_DD_SERVICE: "messaging",
         },
         port_container: "{{ service_messaging_external_port | int }}",
         port_nginx: "{{ service_messaging_internal_port }}",

@@ -29,8 +29,9 @@
             SECRET_CODES: "{{ service_website_secret_codes }}",
             SESSION_SECRET: "{{ service_website_session_secret | int }}",
             PORT: "{{ service_website_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_DD_API_KEY: "{{ dd_api_key }}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH')|default('master', True) == 'master' %}prod{% else %}dev{% endif %}",
+            LOGS_DD_SERVICE: "website",
         },
         port_container: "{{ service_website_external_port | int }}",
         port_nginx: "{{ service_website_internal_port }}",

@@ -18,8 +18,9 @@
             PG_USERNAME: "{{ service_calendar_pg_username }}", # PostgreSQL username
             PRIVATE_KEY: "{{ service_calendar_private_key }}", # The secret key used to sign JWT
             PORT: "{{ service_calendar_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_DD_API_KEY: "{{ dd_api_key }}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH')|default('master', True) == 'master' %}prod{% else %}dev{% endif %}",
+            LOGS_DD_SERVICE: "calendar",
         },
         port_container: "{{ service_calendar_external_port | int }}",
         port_nginx: "{{ service_calendar_internal_port }}",
