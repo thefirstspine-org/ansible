@@ -21,7 +21,8 @@
             SUBJECTS: "{{ service_rooms_subjects }}",
             PORT: "{{ service_rooms_external_port | int }}", # The port where to serve the app
             LOGS_DD_API_KEY: "{{ dd_api_key }}",
-            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-apps-es-dev{% endif %}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-db-apps-
+es-dev{% endif %}",
             LOGS_DD_SERVICE: "rooms",
         },
         port_container: "{{ service_rooms_external_port | int }}",

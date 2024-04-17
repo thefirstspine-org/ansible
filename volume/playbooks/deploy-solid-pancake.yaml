@@ -18,7 +18,8 @@
             PORT: "{{ service_solid_pancake_external_port | int }}", # The port where to serve the app
             SOLID_PANCAKE_URL: "https://{{ service_solid_pancake_domain }}",
             LOGS_DD_API_KEY: "{{ dd_api_key }}",
-            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-apps-es-dev{% endif %}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-db-apps-
+es-dev{% endif %}",
             LOGS_DD_SERVICE: "solid-pancake",
         },
         port_container: "{{ service_solid_pancake_external_port | int }}",

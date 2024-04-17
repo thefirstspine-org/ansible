@@ -12,7 +12,8 @@
         docker_env: {
             PORT: "{{ service_arena_external_port | int }}", # The port where to serve the app
             LOGS_DD_API_KEY: "{{ dd_api_key }}",
-            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-apps-es-dev{% endif %}",
+            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-db-apps-
+es-dev{% endif %}",
             LOGS_DD_SERVICE: "arena",
             REPOSITORIES: "PostgreSQL",
             CAPPED_POWER: "30",
