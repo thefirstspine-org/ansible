@@ -11,10 +11,8 @@
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
             PORT: "{{ service_game_assets_external_port | int }}", # The port where to serve the app
-            LOGS_DD_API_KEY: "{{ dd_api_key }}",
-            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-db-apps-
-es-dev{% endif %}",
-            LOGS_DD_SERVICE: "game-assets",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
         },
         port_container: "{{ service_game_assets_external_port | int }}",
         port_nginx: "{{ service_game_assets_internal_port }}",

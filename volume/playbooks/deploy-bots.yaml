@@ -13,10 +13,8 @@
             PORT: "{{ service_bots_external_port | int }}", # The port where to serve the app
             CREDENTIALS: "{{ service_bots_credentials }}",
             PRIVATE_KEY: "{{ service_bots_private_key }}",
-            LOGS_DD_API_KEY: "{{ dd_api_key }}",
-            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-db-apps-
-es-dev{% endif %}",
-            LOGS_DD_SERVICE: "bots",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
         },
         port_container: "{{ service_bots_external_port | int }}",
         port_nginx: "{{ service_bots_internal_port }}",

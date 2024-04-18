@@ -25,10 +25,8 @@
             ROOMS_PUBLIC_KEY: "{{ service_matches_rooms_public_key }}", # Public key to interact with protected service
             SHOP_PUBLIC_KEY: "{{ service_matches_shop_public_key }}", # Public key to interact with protected service
             PORT: "{{ service_matches_external_port | int }}", # The port where to serve the app
-            LOGS_DD_API_KEY: "{{ dd_api_key }}",
-            LOGS_DD_HOSTNAME: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}server-thefirstspine-apps-es-prod{% else %}server-thefirstspine-db-apps-
-es-dev{% endif %}",
-            LOGS_DD_SERVICE: "matches",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
         },
         port_container: "{{ service_matches_external_port | int }}",
         port_nginx: "{{ service_matches_internal_port }}",
