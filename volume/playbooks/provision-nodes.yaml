@@ -12,8 +12,6 @@
   - role: certbot
   - role: certbot-nginx
   - role: docker
-  - role: datadog
-    dd_api_key: "{{ dd_api_key }}"
 
 # Provision database servers
 - hosts: dbs
