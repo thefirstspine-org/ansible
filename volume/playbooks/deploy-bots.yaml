@@ -15,6 +15,7 @@
             PRIVATE_KEY: "{{ service_bots_private_key }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}bots:prod{% else %}bots:dev{% endif %}",
         },
         port_container: "{{ service_bots_external_port | int }}",
         port_nginx: "{{ service_bots_internal_port }}",

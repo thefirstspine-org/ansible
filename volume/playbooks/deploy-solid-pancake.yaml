@@ -19,6 +19,7 @@
             SOLID_PANCAKE_URL: "https://{{ service_solid_pancake_domain }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}solid-pancake:prod{% else %}solid-pancake:dev{% endif %}",
         },
         port_container: "{{ service_solid_pancake_external_port | int }}",
         port_nginx: "{{ service_solid_pancake_internal_port }}",

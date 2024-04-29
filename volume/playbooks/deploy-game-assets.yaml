@@ -13,6 +13,7 @@
             PORT: "{{ service_game_assets_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
+            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}game-assets:prod{% else %}game-assets:dev{% endif %}",
         },
         port_container: "{{ service_game_assets_external_port | int }}",
         port_nginx: "{{ service_game_assets_internal_port }}",
