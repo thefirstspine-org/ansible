@@ -13,14 +13,14 @@
             PORT: "{{ service_arena_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}arena:prod{% else %}arena:dev{% endif %}",
+            LOGS_LOGGLY_HOST: "arena:{{ env }}",
             REPOSITORIES: "PostgreSQL",
             CAPPED_POWER: "30",
             SHOP_PUBLIC_KEY: "{{ service_arena_shop_public_key }}",
             SHOP_URL: "https://{{ service_shop_domain }}",
             ARENA_URL: "https://{{ service_arena_domain }}",
             MATCHES_URL: "https://{{ service_matches_domain }}",
-            AUTH_URL: "https://{{ service_auth_domain }}"
+            AUTH_URL: "https://{{ service_auth_domain }}",
         },
         port_container: "{{ service_arena_external_port | int }}",
         port_nginx: "{{ service_arena_internal_port | int }}",

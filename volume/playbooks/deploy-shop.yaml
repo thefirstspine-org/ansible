@@ -19,7 +19,7 @@
             PORT: "{{ service_shop_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}shop:prod{% else %}shop:dev{% endif %}",
+            LOGS_LOGGLY_HOST: "shop:{{ env }}",
             STRIPE_PRIVATE_KEY: "{{ service_shop_stripe_private_key }}",
             STRIPE_PUBLIC_KEY: "{{ service_shop_stripe_public_key }}",
         },

@@ -15,7 +15,7 @@
             PORT: "{{ service_messaging_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}messaging:prod{% else %}messaging:dev{% endif %}",
+            LOGS_LOGGLY_HOST: "messaging:{{ env }}",
         },
         port_container: "{{ service_messaging_external_port | int }}",
         port_nginx: "{{ service_messaging_internal_port }}",

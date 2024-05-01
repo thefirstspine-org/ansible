@@ -20,7 +20,7 @@
             PORT: "{{ service_calendar_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}calendar:prod{% else %}calendar:dev{% endif %}",
+            LOGS_LOGGLY_HOST: "calendar:{{ env }}",
         },
         port_container: "{{ service_calendar_external_port | int }}",
         port_nginx: "{{ service_calendar_internal_port }}",

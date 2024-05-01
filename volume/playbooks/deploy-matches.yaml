@@ -27,7 +27,7 @@
             PORT: "{{ service_matches_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "{% if lookup('ansible.builtin.env', 'BRANCH') == 'master' %}matches:prod{% else %}matches:dev{% endif %}",
+            LOGS_LOGGLY_HOST: "matches:{{ env }}",
         },
         port_container: "{{ service_matches_external_port | int }}",
         port_nginx: "{{ service_matches_internal_port }}",
