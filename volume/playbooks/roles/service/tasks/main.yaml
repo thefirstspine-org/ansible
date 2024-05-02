@@ -37,9 +37,11 @@
 - name: Build image {{ service_name }}_image
   docker_image:
     name: "{{ service_name }}_image"
-    path: "/var/www/{{ service_name }}"
+    build:
+      path: "/var/www/{{ service_name }}"
     state: present
-    force: true
+    source: build
+    force_source: true
 
 - name: Run image {{ service_name }}_image under container {{ service_name }}_container
   docker_container:
