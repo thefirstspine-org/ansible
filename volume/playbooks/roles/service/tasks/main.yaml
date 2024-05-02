@@ -40,7 +40,6 @@
     path: "/var/www/{{ service_name }}"
     state: present
     force: true
-    rm: true
 
 - name: Run image {{ service_name }}_image under container {{ service_name }}_container
   docker_container:
