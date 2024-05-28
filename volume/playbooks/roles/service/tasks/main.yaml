@@ -39,6 +39,7 @@
     name: "{{ service_name }}_image"
     build:
       path: "/var/www/{{ service_name }}"
+      pull: false
     state: present
     source: build
     force_source: true
@@ -85,4 +86,6 @@
   command: systemctl restart nginx.service
 
 - name: Delete /var/www/{{ service_name }}
-  command: "rm -rf /var/www/{{ service_name }}"
+  file:
+    path: /var/www/{{ service_name }}
+    state: "absent"
