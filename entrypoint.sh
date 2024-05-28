@@ -1,2 +1,3 @@
 #!/bin/sh
+export ANSIBLE_PERSISTENT_COMMAND_TIMEOUT=90
 eval "$@"
