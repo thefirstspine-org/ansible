@@ -14,6 +14,7 @@
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_HOST: "arena:{{ env }}",
+            MATCHES_PUBLIC_KEY: "{{ service_arena_matches_public_key }}", # Public key to interact with protected service
             REPOSITORIES: "PostgreSQL",
             CAPPED_POWER: "30",
             SHOP_PUBLIC_KEY: "{{ service_arena_shop_public_key }}",
