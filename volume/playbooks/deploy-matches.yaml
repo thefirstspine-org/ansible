@@ -28,6 +28,7 @@
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_HOST: "matches:{{ env }}",
+            PURGE_GAMES_AT_STARTUP: "false",
         },
         port_container: "{{ service_matches_external_port | int }}",
         port_nginx: "{{ service_matches_internal_port }}",
