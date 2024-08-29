@@ -19,6 +19,7 @@
             LOGS_LOGGLY_HOST: "bots:{{ env }}",
             GAME_ASSETS_URL: "https://{{ service_game_assets_domain }}",
             MATCHES_URL: "https://{{ service_matches_domain }}",
+            AUTH_URL: "https://{{ service_auth_domain }}",
         },
         port_container: "{{ service_bots_external_port | int }}",
         port_nginx: "{{ service_bots_internal_port }}",
