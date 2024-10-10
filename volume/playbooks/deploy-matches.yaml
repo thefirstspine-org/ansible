@@ -10,7 +10,8 @@
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
-            BOTS_URL: "https://{{ service_bots_domain }}",
+            BOTS_URL: "https://{{ service_robots_domain }}", # Deprecated
+            ROBOTS_URL: "https://{{ service_robots_domain }}",
             AUTH_URL: "https://{{ service_auth_domain }}",
             MESSAGING_URL: "https://{{ service_messaging_domain }}",
             REST_URL: "https://{{ service_game_assets_domain }}", # Deprecated - to be deleted. Use GAME_ASSETS_URL instead.
@@ -20,7 +21,8 @@
             CALENDAR_URL: "https://{{ service_calendar_domain }}",
             MONGO_HOST: "{{ service_matches_mongo_host }}", # MongoDB database host
             PRIVATE_KEY: "{{ service_matches_private_key }}", # Private key to validate protected incoming requests
-            BOTS_PUBLIC_KEY: "{{ service_matches_bots_public_key }}", # Public key to interact with protected service
+            BOTS_PUBLIC_KEY: "{{ service_matches_robots_public_key }}", # Deprecated
+            ROBOTS_PUBLIC_KEY: "{{ service_matches_robots_public_key }}", # Public key to interact with protected service
             MESSAGING_PUBLIC_KEY: "{{ service_matches_messaging_public_key }}", # Public key to interact with protected service
             ROOMS_PUBLIC_KEY: "{{ service_matches_rooms_public_key }}", # Public key to interact with protected service
             SHOP_PUBLIC_KEY: "{{ service_matches_shop_public_key }}", # Public key to interact with protected service

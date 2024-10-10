@@ -22,7 +22,7 @@ docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook 
 
 ```
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-auth.yaml --syntax-check
-docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-bots.yaml --syntax-check
+docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-robots.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-matches.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-messaging.yaml --syntax-check
 docker run --rm -v {path}/volume:/volume thefirstspine/ansible ansible-playbook /volume/playbooks/deploy-game-assets.yaml --syntax-check
@@ -87,7 +87,7 @@ docker run --rm -i -v {path}/volume:/volume thefirstspine/ansible ansible-playbo
 `{app}` is one of the below app:
 - matches
 - auth
-- bots
+- robots
 - calendar
 - messaging
 - game-assets

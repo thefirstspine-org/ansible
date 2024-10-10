@@ -13,7 +13,7 @@ apps:
       service_matches_external_port: 8081
       service_matches_mongo_host: localhost
       service_matches_private_key: "{{ lookup('file', '/volume/keys/matches-private.key') }}"
-      service_matches_bots_public_key: "{{ lookup('file', '/volume/keys/bots-public.cert') }}"
+      service_matches_robots_public_key: "{{ lookup('file', '/volume/keys/robots-public.cert') }}"
       service_matches_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}"
       service_matches_rooms_public_key: "{{ lookup('file', '/volume/keys/rooms-public.cert') }}"
       service_matches_shop_public_key: "{{ lookup('file', '/volume/keys/shop-public.cert') }}"
@@ -32,13 +32,13 @@ apps:
       service_auth_secret_key: -
       service_auth_smtp_transport: smtps://-:-@-:-
       service_auth_private_key: "{{ lookup('file', '/volume/keys/auth-private.key') }}"
-      # Service Bots
-      service_bots: true
-      service_bots_domain: localhost:8083
-      service_bots_internal_port: 8083
-      service_bots_external_port: 8083
-      service_bots_private_key: "{{ lookup('file', '/volume/keys/bots-private.key') }}"
-      service_bots_credentials: -:-,-:-
+      # Service Robots
+      service_robots: true
+      service_robots_domain: localhost:8083
+      service_robots_internal_port: 8083
+      service_robots_external_port: 8083
+      service_robots_private_key: "{{ lookup('file', '/volume/keys/robots-private.key') }}"
+      service_robots_credentials: -:-,-:-
       # Service Messaging
       service_messaging: true
       service_messaging_domain: localhost:8084

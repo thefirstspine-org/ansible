@@ -15,7 +15,8 @@
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
             LOGS_LOGGLY_HOST: "arena:{{ env }}",
             MATCHES_PUBLIC_KEY: "{{ service_arena_matches_public_key }}", # Public key to interact with protected service,
-            BOTS_PUBLIC_KEY: "{{ service_arena_bots_public_key }}",
+            BOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}", # Deprecated
+            ROBOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}",
             REPOSITORIES: "PostgreSQL",
             CAPPED_POWER: "30",
             SHOP_PUBLIC_KEY: "{{ service_arena_shop_public_key }}",
@@ -23,7 +24,8 @@
             ARENA_URL: "https://{{ service_arena_domain }}",
             MATCHES_URL: "https://{{ service_matches_domain }}",
             AUTH_URL: "https://{{ service_auth_domain }}",
-            BOTS_URL: "https://{{ service_bots_domain }}",
+            BOTS_URL: "https://{{ service_robots_domain }}", # Deprecated
+            ROBOTS_URL: "https://{{ service_robots_domain }}",
             POSTGRESQL_DATABASE: "{{ service_arena_pg_database }}", # PostgreSQL database name
             POSTGRESQL_HOST: "{{ service_arena_pg_host }}", # PostgreSQL database host
             POSTGRESQL_PORT: "{{ service_arena_pg_port | int }}", # PostgreSQL database port

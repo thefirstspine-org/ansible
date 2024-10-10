@@ -1,29 +1,29 @@
-# This playbook deploys the bots app
+# This playbook deploys the Robots app
 
 - hosts: apps
 
   roles:
     - {
         role: "service",
-        service_name: "bots",
-        repository: "git@github.com:thefirstspine/bots.git",
+        service_name: "robots",
+        repository: "git@github.com:thefirstspine/robots.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
         docker_env: {
-            PORT: "{{ service_bots_external_port | int }}", # The port where to serve the app
-            CREDENTIALS: "{{ service_bots_credentials }}",
-            PRIVATE_KEY: "{{ service_bots_private_key }}",
-            MATCHES_PUBLIC_KEY: "{{ service_bots_matches_public_key }}",
+            PORT: "{{ service_robots_external_port | int }}", # The port where to serve the app
+            CREDENTIALS: "{{ service_robots_credentials }}",
+            PRIVATE_KEY: "{{ service_robots_private_key }}",
+            MATCHES_PUBLIC_KEY: "{{ service_robots_matches_public_key }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "bots:{{ env }}",
+            LOGS_LOGGLY_HOST: "robots:{{ env }}",
             GAME_ASSETS_URL: "https://{{ service_game_assets_domain }}",
             MATCHES_URL: "https://{{ service_matches_domain }}",
             AUTH_URL: "https://{{ service_auth_domain }}",
         },
-        port_container: "{{ service_bots_external_port | int }}",
-        port_nginx: "{{ service_bots_internal_port }}",
-        domain: "{{ service_bots_domain }}",
+        port_container: "{{ service_robots_external_port | int }}",
+        port_nginx: "{{ service_robots_internal_port }}",
+        domain: "{{ service_robots_domain }}",
         cerbot_email: "{{ certbot_email }}",
-        when: service_bots|d('') == true
+        when: service_robots|d('') == true
       }
