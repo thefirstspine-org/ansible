@@ -5,7 +5,7 @@
   roles:
     - {
         role: "service",
-        service_name: "matches:{{ service_matches_realm }}",
+        service_name: "matches-{{ service_matches_realm }}",
         repository: "git@github.com:thefirstspine/matches.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
