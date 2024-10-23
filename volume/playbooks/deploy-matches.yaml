@@ -5,7 +5,7 @@
   roles:
     - {
         role: "service",
-        service_name: "matches",
+        service_name: "matches:{{ service_matches_realm }}",
         repository: "git@github.com:thefirstspine/matches.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         deploy_private_key: "{{ deployment_private_key }}",
@@ -29,7 +29,7 @@
             PORT: "{{ service_matches_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "matches:{{ env }}",
+            LOGS_LOGGLY_HOST: "matches:{{ service_matches_realm }}:{{ env }}",
             PURGE_GAMES_AT_STARTUP: "false",
         },
         port_container: "{{ service_matches_external_port | int }}",

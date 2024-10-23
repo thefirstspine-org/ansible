@@ -17,6 +17,7 @@ apps:
       service_matches_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}"
       service_matches_rooms_public_key: "{{ lookup('file', '/volume/keys/rooms-public.cert') }}"
       service_matches_shop_public_key: "{{ lookup('file', '/volume/keys/shop-public.cert') }}"
+      service_matches_realm: default
       # Service Auth
       service_auth: true
       service_auth_domain: localhost:8082
