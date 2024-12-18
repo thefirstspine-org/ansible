@@ -15,8 +15,8 @@
 
 - name: Ensure GitHub deploy key is present on the server.
   copy:
-    src: "{{ deploy_private_key }}"
-    dest: /var/www/.ssh/deploy_key
+    src: "{{ git_ssh_key }}"
+    dest: /var/www/.ssh/git_ssh_key
     mode: 0600
     owner: www-data
     group: www-data
@@ -30,7 +30,7 @@
     repo: "{{ repository }}"
     dest: "/var/www/{{ service_name }}"
     accept_hostkey: yes
-    key_file: /var/www/.ssh/deploy_key
+    key_file: /var/www/.ssh/git_ssh_key
     version: "{{ branch }}"
   become_user: www-data
 
