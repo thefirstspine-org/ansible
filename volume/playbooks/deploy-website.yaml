@@ -8,7 +8,7 @@
         service_name: "website",
         repository: "git@github.com:thefirstspine/website.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
-        git_ssh_key: "{{ git_ssh_key }}",
+        git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
             WEBSITE_URL: "https://{{ service_website_domain }}",
             ARENA_REALMS_URL: "https://{realm}.{{ service_arena_domain }}",

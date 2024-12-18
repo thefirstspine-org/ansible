@@ -8,7 +8,7 @@
         service_name: "matches-{{ service_matches_realm }}",
         repository: "git@github.com:thefirstspine/matches.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
-        git_ssh_key: "{{ git_ssh_key }}",
+        git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
             BOTS_URL: "https://{{ service_robots_domain }}", # Deprecated
             ROBOTS_URL: "https://{{ service_robots_domain }}",
