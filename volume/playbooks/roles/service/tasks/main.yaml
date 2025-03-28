@@ -13,7 +13,7 @@
     owner: www-data
     group: www-data
 
-- name: Ensure GitHub deploy key is present on the server.
+- name: Ensure GitHub SSH key is present on the server.
   copy:
     src: "{{ git_ssh_key }}"
     dest: /var/www/.ssh/git_ssh_key
@@ -32,7 +32,13 @@
     accept_hostkey: yes
     key_file: /var/www/.ssh/git_ssh_key
     version: "{{ branch }}"
+    depth: 1
   become_user: www-data
+
+- name: Remove /var/www/{{ service_name }}/.git directory
+  file:
+    path: /var/www/{{ service_name }}/.git
+    state: absent
 
 - name: Build image {{ service_name }}_image
   docker_image:
