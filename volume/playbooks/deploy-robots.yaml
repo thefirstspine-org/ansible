@@ -15,8 +15,10 @@
             PRIVATE_KEY: "{{ service_robots_private_key }}",
             MATCHES_PUBLIC_KEY: "{{ service_robots_matches_public_key }}",
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "robots:{{ env }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
+            LOGS_LOGGLY_HOST: "robots:{{ env }}", # deprecated
+            LOGS_LOGGLY_SERVICE: "robots",
+            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
             GAME_ASSETS_URL: "https://{{ service_game_assets_domain }}",
             MATCHES_URL: "https://{{ service_matches_domain }}",
             AUTH_URL: "https://{{ service_auth_domain }}",

@@ -12,8 +12,10 @@
         docker_env: {
             PORT: "{{ service_game_assets_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "game-assets:{{ env }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
+            LOGS_LOGGLY_HOST: "game-assets:{{ env }}", # deprecated
+            LOGS_LOGGLY_SERVICE: "game-assets",
+            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
         },
         port_container: "{{ service_game_assets_external_port | int }}",
         port_nginx: "{{ service_game_assets_internal_port }}",

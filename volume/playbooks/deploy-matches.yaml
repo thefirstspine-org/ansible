@@ -28,8 +28,10 @@
             SHOP_PUBLIC_KEY: "{{ service_matches_shop_public_key }}", # Public key to interact with protected service
             PORT: "{{ service_matches_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "matches:{{ service_matches_realm }}:{{ env }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
+            LOGS_LOGGLY_HOST: "matches:{{ service_matches_realm }}:{{ env }}", # deprecated
+            LOGS_LOGGLY_SERVICE: "matches:{{ service_matches_realm }}",
+            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
             PURGE_GAMES_AT_STARTUP: "false",
         },
         port_container: "{{ service_matches_external_port | int }}",

@@ -12,8 +12,10 @@
         docker_env: {
             PORT: "{{ service_arena_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "arena:{{ env }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
+            LOGS_LOGGLY_HOST: "arena:{{ env }}", # deprecated
+            LOGS_LOGGLY_SERVICE: "arena",
+            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
             MATCHES_PUBLIC_KEY: "{{ service_arena_matches_public_key }}", # Public key to interact with protected service,
             BOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}", # Deprecated
             ROBOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}",

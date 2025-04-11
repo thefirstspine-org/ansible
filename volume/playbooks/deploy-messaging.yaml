@@ -14,8 +14,10 @@
             PRIVATE_KEY: "{{ service_messaging_private_key }}", # Private key to validate protected incoming requests
             PORT: "{{ service_messaging_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}",
-            LOGS_LOGGLY_HOST: "messaging:{{ env }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
+            LOGS_LOGGLY_HOST: "messaging:{{ env }}", # deprecated
+            LOGS_LOGGLY_SERVICE: "messaging",
+            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
         },
         port_container: "{{ service_messaging_external_port | int }}",
         port_nginx: "{{ service_messaging_internal_port }}",
