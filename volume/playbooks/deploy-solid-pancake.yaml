@@ -20,9 +20,9 @@
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
             LOGS_LOGGLY_HOST: "solid-pancake:{{ env }}", # deprecated
-            LOGS_LOGGLY_SERVICE: "solid-pancake",
+            LOGS_LOGGLY_SERVICE: "solid-pancake:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:solid-pancake",
+            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:calendar:{{ env }}",
         },
         port_container: "{{ service_solid_pancake_external_port | int }}",
         port_nginx: "{{ service_solid_pancake_internal_port }}",

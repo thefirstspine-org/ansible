@@ -20,9 +20,9 @@
             AUTH_URL: "https://{{ service_auth_domain }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
             LOGS_LOGGLY_HOST: "robots:{{ env }}", # deprecated
-            LOGS_LOGGLY_SERVICE: "robots",
+            LOGS_LOGGLY_SERVICE: "robots:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:solid-pancake",
+            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:robots:{{ env }}",
         },
         port_container: "{{ service_robots_external_port | int }}",
         port_nginx: "{{ service_robots_internal_port }}",
