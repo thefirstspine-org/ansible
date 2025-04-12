@@ -22,7 +22,7 @@
             LOGS_LOGGLY_HOST: "solid-pancake:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "solid-pancake:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:calendar:{{ env }}",
+            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:solid-pancake:{{ env }}",
         },
         port_container: "{{ service_solid_pancake_external_port | int }}",
         port_nginx: "{{ service_solid_pancake_internal_port }}",
