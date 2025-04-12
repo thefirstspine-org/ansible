@@ -23,6 +23,7 @@
             LOGS_LOGGLY_HOST: "calendar:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "calendar",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:solid-pancake",
         },
         port_container: "{{ service_calendar_external_port | int }}",
         port_nginx: "{{ service_calendar_internal_port }}",

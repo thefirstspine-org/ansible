@@ -25,6 +25,7 @@
             LOGS_LOGGLY_HOST: "rooms:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "rooms",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:solid-pancake",
         },
         port_container: "{{ service_rooms_external_port | int }}",
         port_nginx: "{{ service_rooms_internal_port }}",

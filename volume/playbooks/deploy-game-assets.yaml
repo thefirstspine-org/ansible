@@ -16,6 +16,7 @@
             LOGS_LOGGLY_HOST: "game-assets:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "game-assets",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:solid-pancake",
         },
         port_container: "{{ service_game_assets_external_port | int }}",
         port_nginx: "{{ service_game_assets_internal_port }}",

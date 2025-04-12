@@ -18,12 +18,13 @@
             PRIVATE_KEY: "{{ service_shop_private_key }}", # Private key to validate protected incoming requests
             PORT: "{{ service_shop_external_port | int }}", # The port where to serve the app
             LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            STRIPE_PRIVATE_KEY: "{{ service_shop_stripe_private_key }}",
+            STRIPE_PUBLIC_KEY: "{{ service_shop_stripe_public_key }}",
             LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
             LOGS_LOGGLY_HOST: "shop:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "shop",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            STRIPE_PRIVATE_KEY: "{{ service_shop_stripe_private_key }}",
-            STRIPE_PUBLIC_KEY: "{{ service_shop_stripe_public_key }}",
+            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:solid-pancake",
         },
         port_container: "{{ service_shop_external_port | int }}",
         port_nginx: "{{ service_shop_internal_port | int }}",
