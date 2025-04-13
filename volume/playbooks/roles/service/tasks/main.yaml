@@ -25,6 +25,11 @@
 - name: Ensure setfacl support is present.
   package: name=acl
 
+- name: Ensure /var/www/{{ service_name }} does not exist
+  file:
+    path: /var/www/{{ service_name }}
+    state: "absent"
+
 - name: Clone repository {{ repository }}:{{ branch }} to /var/www/{{ service_name }}
   git:
     repo: "{{ repository }}"
