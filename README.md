@@ -1,5 +1,7 @@
 # TFS ansible control node
 
+Ansible control node to provision nodes & deploy applications.
+
 ## Installation
 
 The control node should be setuped with the `setup.sh` script present in the TFS Ansible repository. This will install Docker that is required to launch the control node under a container.
