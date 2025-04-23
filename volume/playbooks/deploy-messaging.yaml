@@ -18,7 +18,6 @@
             LOGS_LOGGLY_HOST: "messaging:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "messaging:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:messaging:{{ env }}",
         },
         port_container: "{{ service_messaging_external_port | int }}",
         port_nginx: "{{ service_messaging_internal_port }}",

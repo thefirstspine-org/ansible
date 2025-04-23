@@ -16,7 +16,6 @@
             LOGS_LOGGLY_HOST: "arena:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "arena:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            SW_APM_SERVICE_KEY: "{{ appoptics_key }}:arena:{{ env }}",
             MATCHES_PUBLIC_KEY: "{{ service_arena_matches_public_key }}", # Public key to interact with protected service,
             BOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}", # Deprecated
             ROBOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}",

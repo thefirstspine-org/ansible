@@ -24,7 +24,6 @@
             LOGS_LOGGLY_HOST: "shop:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "shop:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:shop:{{ env }}",
         },
         port_container: "{{ service_shop_external_port | int }}",
         port_nginx: "{{ service_shop_internal_port | int }}",

@@ -33,7 +33,6 @@
             LOGS_LOGGLY_HOST: "matches:{{ service_matches_realm }}:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "matches:{{ service_matches_realm }}:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:matches:{{ service_matches_realm }}:{{ env }}",
         },
         port_container: "{{ service_matches_external_port | int }}",
         port_nginx: "{{ service_matches_internal_port }}",

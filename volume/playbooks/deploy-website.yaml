@@ -34,7 +34,6 @@
             LOGS_LOGGLY_HOST: "website:{{ env }}", # deprecated
             LOGS_LOGGLY_SERVICE: "website:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
-            APPOPTICS_SERVICE_KEY: "{{ appoptics_key }}:website:{{ env }}",
         },
         port_container: "{{ service_website_external_port | int }}",
         port_nginx: "{{ service_website_internal_port }}",
