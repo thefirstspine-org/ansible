@@ -113,9 +113,19 @@ apps:
       service_solid_pancake_pg_password: solid_pancake
       service_solid_pancake_pg_username: solid_pancake
       # Service arena
+      service_arena: true
       service_arena_domain: localhost:8091
       service_arena_internal_port: 8091
       service_arena_external_port: 8080
+      service_arena_pg_database: arena
+      service_arena_pg_host: localhost
+      service_arena_pg_port: 5432
+      service_arena_pg_password: arena
+      service_arena_pg_username: arena
+      service_arena_shop_public_key: "{{ lookup('file', '/volume/keys/shop-public.cert') }}"
+      service_arena_matches_public_key: "{{ lookup('file', '/volume/keys/matches-public.cert') }}"
+      service_arena_robots_public_key: "{{ lookup('file', '/volume/keys/robots-public.cert') }}"
+      service_arena_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}"
 dbs:
   hosts:
     db:
