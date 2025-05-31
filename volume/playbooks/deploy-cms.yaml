@@ -1,0 +1,40 @@
+# This playbook deploys the CMS app
+
+- hosts: apps
+
+  roles:
+    - {
+        role: "service",
+        service_name: "cms",
+        repository: "git@github.com:thefirstspine/cms.git",
+        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
+        git_ssh_key: "{{ git_ssh_key_template }}",
+        docker_env: {
+            HOST: "0.0.0.0",
+            PORT: "{{ service_cms_external_port | int }}", # The port where to serve the app
+            CMS_URL: "https://{{ service_cms_domain }}",
+            APP_KEYS: "{{ service_cms_app_keys }}",
+            API_TOKEN_SALT: "{{ service_cms_token_salt }}",
+            ADMIN_JWT_SECRET: "{{ service_cms_admin_jwt_secret }}",
+            TRANSFER_TOKEN_SALT: "{{ service_cms_transfer_token_salt }}",
+            ENCRYPTION_KEY: "{{ service_cms_encryption_key }}",
+            DATABASE_CLIENT: "postgres",
+            DATABASE_HOST: "{{ service_cms_pg_host }}",
+            DATABASE_PORT: "{{ service_cms_pg_port | int }}",
+            DATABASE_NAME: "{{ service_cms_pg_database }}",
+            DATABASE_PASSWORD: "{{ service_cms_pg_password }}",
+            DATABASE_USERNAME: "{{ service_cms_pg_username }}",
+            DATABASE_SSL: false,
+            JWT_SECRET: "{{ service_cms_jwt_secret }}",
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
+            LOGS_LOGGLY_HOST: "cms:{{ env }}", # deprecated
+            LOGS_LOGGLY_SERVICE: "cms:{{ env }}",
+            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+        },
+        port_container: "{{ service_cms_external_port | int }}",
+        port_nginx: "{{ service_cms_internal_port }}",
+        domain: "{{ service_cms_domain }}",
+        cerbot_email: "{{ certbot_email }}",
+        when: service_cms|d('') == true
+      }

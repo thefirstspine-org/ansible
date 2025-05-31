@@ -126,6 +126,22 @@ apps:
       service_arena_matches_public_key: "{{ lookup('file', '/volume/keys/matches-public.cert') }}"
       service_arena_robots_public_key: "{{ lookup('file', '/volume/keys/robots-public.cert') }}"
       service_arena_messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}"
+      # Service CMS
+      service_cms: true
+      service_cms_domain: localhost:8092
+      service_cms_internal_port: 1337
+      service_cms_external_port: 8092
+      service_cms_pg_database: cms
+      service_cms_pg_host: localhost
+      service_cms_pg_port: 5432
+      service_cms_pg_password: cms
+      service_cms_pg_username: cms
+      service_cms_jwt_secret:
+      service_cms_app_keys:
+      service_cms_token_salt:
+      service_cms_admin_jwt_secret:
+      service_cms_transfer_token_salt:
+      service_cms_encryption_key:
 dbs:
   hosts:
     db:
