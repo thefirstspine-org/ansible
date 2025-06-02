@@ -10,7 +10,7 @@
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
-            HOST: "localhost",
+            HOST: "0.0.0.0",
             PORT: "{{ service_cms_external_port | int }}", # The port where to serve the app
             CMS_URL: "https://{{ service_cms_domain }}",
             APP_KEYS: "{{ service_cms_app_keys }}",
