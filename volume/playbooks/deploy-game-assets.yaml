@@ -6,7 +6,7 @@
     - {
         role: "service",
         service_name: "game-assets",
-        repository: "git@github.com:thefirstspine/game-assets.git",
+        repository: "git@github.com:thefirstspine-org/game-assets.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {

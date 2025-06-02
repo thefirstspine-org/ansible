@@ -6,7 +6,7 @@
     - {
         role: "service",
         service_name: "calendar",
-        repository: "git@github.com:thefirstspine/calendar.git",
+        repository: "git@github.com:thefirstspine-org/calendar.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {

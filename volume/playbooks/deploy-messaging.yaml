@@ -6,7 +6,7 @@
     - {
         role: "service",
         service_name: "messaging",
-        repository: "git@github.com:thefirstspine/messaging.git",
+        repository: "git@github.com:thefirstspine-org/messaging.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {

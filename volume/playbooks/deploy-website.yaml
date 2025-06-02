@@ -6,7 +6,7 @@
     - {
         role: "service",
         service_name: "website",
-        repository: "git@github.com:thefirstspine/website.git",
+        repository: "git@github.com:thefirstspine-org/website.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {

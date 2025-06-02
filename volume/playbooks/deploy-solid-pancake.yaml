@@ -6,7 +6,7 @@
     - {
         role: "service",
         service_name: "solid-pancake",
-        repository: "git@github.com:thefirstspine/solid-pancake.git",
+        repository: "git@github.com:thefirstspine-org/solid-pancake.git",
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
