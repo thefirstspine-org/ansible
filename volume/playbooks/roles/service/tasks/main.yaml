@@ -55,7 +55,7 @@
     source: build
     force_source: true
 
-- name: Ensure volume {{ volume | default('/tmp:/tmp') }} directory exists.
+- name: Ensure volume {{ volume_host | default('/tmp') }} directory exists.
   file:
     path: "{{ volume_host | default('/tmp') }}"
     state: directory
