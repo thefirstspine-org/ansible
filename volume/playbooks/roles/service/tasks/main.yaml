@@ -63,6 +63,8 @@
     state: started
     recreate: true
     restart_policy: "always"
+    volumes:
+      - {{ volume | default('/tmp:/tmp') }}
     published_ports:
       - "{{ port_nginx }}:{{ port_container }}"
 
