@@ -1,0 +1,25 @@
+# This playbook deploys the website app
+
+- hosts: apps
+
+  roles:
+    - {
+        role: "service",
+        service_name: "website",
+        repository: "git@github.com:thefirstspine-org/website.git",
+        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
+        git_ssh_key: "{{ git_ssh_key_template }}",
+        docker_env: {
+            CMS_URL: "https://{{ service_cms_domain }}",
+            CMS_TOKEN: "{{ service_website_cms_token }}",
+            PORT: "{{ service_website_external_port | int }}", # The port where to serve the app
+            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
+            LOGS_LOGGLY_SERVICE: "website:{{ env }}",
+            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+        },
+        port_container: "{{ service_website_external_port | int }}",
+        port_nginx: "{{ service_website_internal_port }}",
+        domain: "{{ service_website_domain }}",
+        cerbot_email: "{{ certbot_email }}",
+        when: service_website|d('') == true
+      }
