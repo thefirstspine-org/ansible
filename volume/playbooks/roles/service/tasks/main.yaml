@@ -57,7 +57,7 @@
 
 - name: Ensure volume {{ volume | default('/tmp:/tmp') }} directory exists.
   file:
-    path: {{ volume | default('/tmp:/tmp') }}
+    path: {{ volume_host | default('/tmp') }}
     state: directory
 
 - name: Run image {{ service_name }}_image under container {{ service_name }}_container
@@ -69,7 +69,7 @@
     recreate: true
     restart_policy: "always"
     volumes:
-      - {{ volume | default('/tmp:/tmp') }}
+      - "{{ volume_host | default('/tmp') }}:{{ volume_container | default('/tmp') }}"
     published_ports:
       - "{{ port_nginx }}:{{ port_container }}"
 
