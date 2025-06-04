@@ -57,7 +57,7 @@
 
 - name: Ensure volume {{ volume | default('/tmp:/tmp') }} directory exists.
   file:
-    path: {{ volume_host | default('/tmp') }}
+    path: "{{ volume_host | default('/tmp') }}"
     state: directory
 
 - name: Run image {{ service_name }}_image under container {{ service_name }}_container
