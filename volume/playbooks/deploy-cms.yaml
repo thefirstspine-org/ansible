@@ -32,6 +32,8 @@
             LOGS_LOGGLY_SERVICE: "cms:{{ env }}",
             LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
         },
+        volume_host: "/var/www/html/cms/uploads",
+        volume_container: "/cms/public/uploads",
         port_container: "{{ service_cms_external_port | int }}",
         port_nginx: "{{ service_cms_internal_port }}",
         domain: "{{ service_cms_domain }}",
