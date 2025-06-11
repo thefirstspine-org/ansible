@@ -10,6 +10,7 @@
         branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
+            GAME_ASSETS_URL: "https://{{ service_game_assets_domain }}",
             CMS_URL: "https://{{ service_cms_domain }}",
             CMS_TOKEN: "{{ service_website_cms_token }}",
             PORT: "{{ service_website_external_port | int }}", # The port where to serve the app
