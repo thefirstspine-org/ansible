@@ -22,6 +22,8 @@
             MESSAGING_PUBLIC_KEY: "{{ service_arena_messaging_public_key }}",
             REPOSITORIES: "PostgreSQL",
             CAPPED_POWER: "30",
+            LIMIT_CARDS: "100",
+            LIMIT_DECKS: "3",
             SHOP_PUBLIC_KEY: "{{ service_arena_shop_public_key }}",
             SHOP_URL: "https://{{ service_shop_domain }}",
             ARENA_URL: "https://{{ service_arena_domain }}",
