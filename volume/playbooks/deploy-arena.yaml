@@ -20,6 +20,7 @@
             BOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}", # Deprecated
             ROBOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}",
             MESSAGING_PUBLIC_KEY: "{{ service_arena_messaging_public_key }}",
+            STEAM_WEB_API_KEY: "{{ service_arena_steam_web_api_key }}",
             REPOSITORIES: "PostgreSQL",
             CAPPED_POWER: "30",
             LIMIT_CARDS: "100",
