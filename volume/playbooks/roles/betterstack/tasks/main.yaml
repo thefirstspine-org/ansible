@@ -1,0 +1,10 @@
+- name: Download Better Stack (Vector)
+  command: curl -sSL https://telemetry.betterstack.com/setup-vector/docker/{{ source_token }} -o /tmp/setup-vector.sh
+- name: Rework setup file
+  command: sed -i 's/apt-get install vector/apt-get install vector -y/gi' /tmp/setup-vector.sh
+- name: Install Better Stack (Vector)
+  command: echo "\n" | bash /tmp/setup-vector.sh
+- name: Assign role vector to docker
+  command: usermod -a -G docker vector
+- name: Restart Vector service
+  command: systemctl restart vector

@@ -8,10 +8,12 @@
   vars:
     certbot_auto_renew: false
   roles:
-  - role: nginx
-  - role: certbot
-  - role: certbot-nginx
-  - role: docker
+    - role: nginx
+    - role: certbot
+    - role: certbot-nginx
+    - role: docker
+    - role: betterstack
+      source_token: "{{ betterstack_source_token }}"
 
 # Provision database servers
 - hosts: dbs
@@ -52,3 +54,5 @@
       database: cms
       user: cms
       password: "{{ docker_psql_cms_password }}"
+    - role: betterstack
+      source_token: "{{ betterstack_source_token }}"
