@@ -21,11 +21,7 @@
             SMTP_TRANSPORT: "{{ service_auth_smtp_transport }}", # Smtp transport used to send emails
             PRIVATE_KEY: "{{ service_auth_private_key }}", # Private key to validate protected incoming requests
             PORT: "{{ service_auth_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
-            LOGS_LOGGLY_HOST: "auth:{{ env }}", # deprecated
-            LOGS_LOGGLY_SERVICE: "auth:{{ env }}",
-            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+            LOGS_BETTERSTACK: true,
         },
         port_container: "{{ service_auth_external_port | int }}",
         port_nginx: "{{ service_auth_internal_port }}",

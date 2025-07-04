@@ -17,13 +17,9 @@
             PG_USERNAME: "{{ service_shop_pg_username }}", # PostgreSQL username
             PRIVATE_KEY: "{{ service_shop_private_key }}", # Private key to validate protected incoming requests
             PORT: "{{ service_shop_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
             STRIPE_PRIVATE_KEY: "{{ service_shop_stripe_private_key }}",
             STRIPE_PUBLIC_KEY: "{{ service_shop_stripe_public_key }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
-            LOGS_LOGGLY_HOST: "shop:{{ env }}", # deprecated
-            LOGS_LOGGLY_SERVICE: "shop:{{ env }}",
-            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+            LOGS_BETTERSTACK: true,
         },
         port_container: "{{ service_shop_external_port | int }}",
         port_nginx: "{{ service_shop_internal_port | int }}",

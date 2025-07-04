@@ -26,11 +26,6 @@
             DATABASE_USERNAME: "{{ service_cms_pg_username }}",
             DATABASE_SSL: "false",
             JWT_SECRET: "{{ service_cms_jwt_secret }}",
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
-            LOGS_LOGGLY_HOST: "cms:{{ env }}", # deprecated
-            LOGS_LOGGLY_SERVICE: "cms:{{ env }}",
-            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
         },
         volume_host: "/var/www/html/cms/uploads",
         volume_container: "/cms/public/uploads",

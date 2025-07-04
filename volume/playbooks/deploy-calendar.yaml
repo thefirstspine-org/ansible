@@ -18,11 +18,7 @@
             PG_USERNAME: "{{ service_calendar_pg_username }}", # PostgreSQL username
             PRIVATE_KEY: "{{ service_calendar_private_key }}", # The secret key used to sign JWT
             PORT: "{{ service_calendar_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
-            LOGS_LOGGLY_HOST: "calendar:{{ env }}", # deprecated
-            LOGS_LOGGLY_SERVICE: "calendar:{{ env }}",
-            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+            LOGS_BETTERSTACK: true,
         },
         port_container: "{{ service_calendar_external_port | int }}",
         port_nginx: "{{ service_calendar_internal_port }}",

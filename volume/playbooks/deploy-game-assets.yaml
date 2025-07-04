@@ -11,11 +11,7 @@
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
             PORT: "{{ service_game_assets_external_port | int }}", # The port where to serve the app
-            LOGS_LOGGLY_TOKEN: "{{ loggly_token }}",
-            LOGS_LOGGLY_SUBDOMAIN: "{{ loggly_subdomain }}", # deprecated
-            LOGS_LOGGLY_HOST: "game-assets:{{ env }}", # deprecated
-            LOGS_LOGGLY_SERVICE: "game-assets:{{ env }}",
-            LOGS_LOGGLY_HOSTNAME: "{{ loggly_hostname }}",
+            LOGS_BETTERSTACK: true,
         },
         port_container: "{{ service_game_assets_external_port | int }}",
         port_nginx: "{{ service_game_assets_internal_port }}",
