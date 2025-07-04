@@ -48,3 +48,7 @@
       database: arena
       user: arena
       password: "{{ docker_psql_arena_password }}"
+    - role: pgsql-database
+      database: cms
+      user: cms
+      password: "{{ docker_psql_cms_password }}"
