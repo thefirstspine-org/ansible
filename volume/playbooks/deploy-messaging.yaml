@@ -13,7 +13,8 @@
             AUTH_URL: "https://{{ service_auth_domain }}",
             PRIVATE_KEY: "{{ service_messaging_private_key }}", # Private key to validate protected incoming requests
             PORT: "{{ service_messaging_external_port | int }}", # The port where to serve the app
-            LOGS_BETTERSTACK: true,
+            LOGS_BETTERSTACK: "true",
+            LOGS_BETTERSTACK_SERVICE: "messaging:{{ env }}",
         },
         port_container: "{{ service_messaging_external_port | int }}",
         port_nginx: "{{ service_messaging_internal_port }}",
