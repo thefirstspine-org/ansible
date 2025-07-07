@@ -11,8 +11,8 @@
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
             PORT: "{{ service_arena_external_port | int }}", # The port where to serve the app
-            LOGS_BETTERSTACK: "true",
-            LOGS_BETTERSTACK_SERVICE: "arena:{{ env }}",
+            SERVICE: "arena",
+            ENV: "{{ env }}",
             MATCHES_PUBLIC_KEY: "{{ service_arena_matches_public_key }}", # Public key to interact with protected service,
             BOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}", # Deprecated
             ROBOTS_PUBLIC_KEY: "{{ service_arena_robots_public_key }}",

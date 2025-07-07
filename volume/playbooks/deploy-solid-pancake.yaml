@@ -17,8 +17,8 @@
             PG_USERNAME: "{{ service_solid_pancake_pg_username }}", # PostgreSQL username
             PORT: "{{ service_solid_pancake_external_port | int }}", # The port where to serve the app
             SOLID_PANCAKE_URL: "https://{{ service_solid_pancake_domain }}",
-            LOGS_BETTERSTACK: "true",
-            LOGS_BETTERSTACK_SERVICE: "solid-pancake:{{ env }}",
+            SERVICE: "solid-pancake",
+            ENV: "{{ env }}",
         },
         port_container: "{{ service_solid_pancake_external_port | int }}",
         port_nginx: "{{ service_solid_pancake_internal_port }}",

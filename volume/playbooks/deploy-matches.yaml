@@ -28,8 +28,8 @@
             SHOP_PUBLIC_KEY: "{{ service_matches_shop_public_key }}", # Public key to interact with protected service
             PORT: "{{ service_matches_external_port | int }}", # The port where to serve the app
             PURGE_GAMES_AT_STARTUP: "false",
-            LOGS_BETTERSTACK: "true",
-            LOGS_BETTERSTACK_SERVICE: "matches:{{ service_matches_realm }}:{{ env }}",
+            SERVICE: "matches:{{ service_matches_realm }}",
+            ENV: "{{ env }}",
         },
         port_container: "{{ service_matches_external_port | int }}",
         port_nginx: "{{ service_matches_internal_port }}",

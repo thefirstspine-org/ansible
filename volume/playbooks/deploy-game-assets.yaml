@@ -11,8 +11,8 @@
         git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
             PORT: "{{ service_game_assets_external_port | int }}", # The port where to serve the app
-            LOGS_BETTERSTACK: "true",
-            LOGS_BETTERSTACK_SERVICE: "game-assets:{{ env }}",
+            SERVICE: "game-assets",
+            ENV: "{{ env }}",
         },
         port_container: "{{ service_game_assets_external_port | int }}",
         port_nginx: "{{ service_game_assets_internal_port }}",

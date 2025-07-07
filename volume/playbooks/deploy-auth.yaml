@@ -21,8 +21,8 @@
             SMTP_TRANSPORT: "{{ service_auth_smtp_transport }}", # Smtp transport used to send emails
             PRIVATE_KEY: "{{ service_auth_private_key }}", # Private key to validate protected incoming requests
             PORT: "{{ service_auth_external_port | int }}", # The port where to serve the app
-            LOGS_BETTERSTACK: "true",
-            LOGS_BETTERSTACK_SERVICE: "auth:{{ env }}",
+            SERVICE: "auth",
+            ENV: "{{ env }}",
         },
         port_container: "{{ service_auth_external_port | int }}",
         port_nginx: "{{ service_auth_internal_port }}",
