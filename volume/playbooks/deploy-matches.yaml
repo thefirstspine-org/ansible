@@ -20,6 +20,7 @@
             SHOP_URL: "https://{{ service_shop_domain }}",
             CALENDAR_URL: "https://{{ service_calendar_domain }}",
             MONGO_HOST: "{{ service_matches_mongo_host }}", # MongoDB database host
+            MONGO_DB: "arena", # MongoDB database
             PRIVATE_KEY: "{{ service_matches_private_key }}", # Private key to validate protected incoming requests
             BOTS_PUBLIC_KEY: "{{ service_matches_robots_public_key }}", # Deprecated
             ROBOTS_PUBLIC_KEY: "{{ service_matches_robots_public_key }}", # Public key to interact with protected service
