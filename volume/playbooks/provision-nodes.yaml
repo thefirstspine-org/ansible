@@ -13,7 +13,7 @@
     - role: certbot-nginx
     - role: docker
     - role: betterstack
-      source_token: "{{ betterstack_source_token }}"
+      source_token: "{{ betterstack_collector_secret }}"
 
 # Provision database servers
 - hosts: dbs
@@ -55,4 +55,4 @@
       user: cms
       password: "{{ docker_psql_cms_password }}"
     - role: betterstack
-      source_token: "{{ betterstack_source_token }}"
+      source_token: "{{ betterstack_collector_secret }}"
