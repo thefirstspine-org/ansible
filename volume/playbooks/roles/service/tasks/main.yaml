@@ -10,10 +10,10 @@
 - name: Login to registry {{ registry }} with username {{ registry_username }}
   command: docker login {{ registry }} -u { registry_username }} -p {{ registry_password }}
 
-- name: Run image {{ docker_image }} under container {{ service_name }}_container
+- name: Run image {{ registry }}/{{ docker_image }} under container {{ service_name }}_container
   docker_container:
     name: "{{ service_name }}_container"
-    image: "{{ docker_image }}"
+    image: "{{ registry }}/{{ docker_image }}"
     env: "{{ docker_env }}"
     state: started
     recreate: true
