@@ -1,69 +1,19 @@
-- name: Ensure /var/www/html directory has correct permissions.
-  file:
-    path: /var/www/html
-    state: directory
-    owner: www-data
-    group: www-data
-
-- name: Ensure .ssh directory exists.
-  file:
-    path: /var/www/.ssh
-    state: directory
-    mode: 0700
-    owner: www-data
-    group: www-data
-
-- name: Ensure GitHub SSH key is present on the server.
-  copy:
-    src: "{{ git_ssh_key }}"
-    dest: /var/www/.ssh/git_ssh_key
-    mode: 0600
-    owner: www-data
-    group: www-data
-
 # See: https://stackoverflow.com/a/37096534/100134
 - name: Ensure setfacl support is present.
   package: name=acl
-
-- name: Ensure /var/www/{{ service_name }} does not exist
-  file:
-    path: /var/www/{{ service_name }}
-    state: "absent"
-
-- name: Clone repository {{ repository }}:{{ branch }} to /var/www/{{ service_name }}
-  git:
-    repo: "{{ repository }}"
-    dest: "/var/www/{{ service_name }}"
-    accept_hostkey: yes
-    key_file: /var/www/.ssh/git_ssh_key
-    version: "{{ branch }}"
-    depth: 1
-  become_user: www-data
-
-- name: Remove /var/www/{{ service_name }}/.git directory
-  file:
-    path: /var/www/{{ service_name }}/.git
-    state: absent
-
-- name: Build image {{ service_name }}_image
-  docker_image:
-    name: "{{ service_name }}_image"
-    build:
-      path: "/var/www/{{ service_name }}"
-      pull: false
-    state: present
-    source: build
-    force_source: true
 
 - name: Ensure volume {{ volume_host | default('/tmp') }} directory exists.
   file:
     path: "{{ volume_host | default('/tmp') }}"
     state: directory
 
-- name: Run image {{ service_name }}_image under container {{ service_name }}_container
+- name: Login to registry {{ registry }} with username {{ registry_username }}
+  command: docker login {{ registry }} -u { registry_username }} -p {{ registry_password }}
+
+- name: Run image {{ docker_image }} under container {{ service_name }}_container
   docker_container:
     name: "{{ service_name }}_container"
-    image: "{{ service_name }}_image"
+    image: "{{ docker_image }}"
     env: "{{ docker_env }}"
     state: started
     recreate: true
