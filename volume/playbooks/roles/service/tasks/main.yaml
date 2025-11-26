@@ -7,11 +7,11 @@
     path: "{{ volume_host | default('/tmp') }}"
     state: directory
 
-- name: Login to registry {{ registry | default('docker.io') }} with username {{ registry_username | default('') }}
+- name: Login to registry {{ registry | default('docker.io') }} with username {{ registry_username | default(omit) }}
   docker_login:
     registry_url: "{{ registry | default('https://index.docker.io/v1/') }}"
-    username: "{{ registry_username | default('') }}"
-    password: "{{ registry_password | default('') }}"
+    username: "{{ registry_username | default(omit) }}"
+    password: "{{ registry_password | default(omit) }}"
 
 - name: Run image {{ registry | default('docker.io') }}/{{ docker_image | default(service_name) }} under container {{ service_name }}_container
   docker_container:
