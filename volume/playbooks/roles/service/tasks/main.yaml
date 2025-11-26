@@ -2,6 +2,18 @@
 - name: Ensure setfacl support is present.
   package: name=acl
 
+- name: Debug registry value
+  debug:
+    msg: "registry={{ registry | default('docker.io') }}"
+
+- name: Debug registry_username value
+  debug:
+    msg: "registry_username={{ registry_username | default(omit) }}"
+
+- name: Debug docker_image value
+  debug:
+    msg: "docker_image={{ docker_image | default(service_name) }}"
+
 - name: Ensure volume {{ volume_host | default('/tmp') }} directory exists.
   file:
     path: "{{ volume_host | default('/tmp') }}"
