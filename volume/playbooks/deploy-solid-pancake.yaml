@@ -21,5 +21,5 @@
         port_nginx: "{{ internal_port }}",
         domain: "{{ domain }}",
         cerbot_email: "{{ certbot_email }}",
-        image: "{{ image }}"
+        docker_image: "{{ docker_image }}"
       }
