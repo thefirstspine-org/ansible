@@ -17,9 +17,12 @@
             SERVICE: "solid-pancake",
             ENV: "{{ env }}",
         },
+        docker_image: "{{ docker_image }}",
+        registry: "{{ registry }}",
+        registry_username: "{{ registry_username }}",
+        registry_password: "{{ registry_password }}",
         port_container: "{{ external_port | int }}",
         port_nginx: "{{ internal_port }}",
         domain: "{{ domain }}",
         cerbot_email: "{{ certbot_email }}",
-        docker_image: "{{ docker_image }}"
       }
