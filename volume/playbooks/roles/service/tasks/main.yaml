@@ -7,9 +7,17 @@
     path: "{{ volume_host | default('/tmp') }}"
     state: directory
 
-- name: Debug registry/image values
+- name: Debug values
   debug:
-    msg: "registry={{ registry }}  docker_image={{ docker_image }}  registry_username={{ registry_username }}"
+    msg: "registry={{ registry }}"
+
+- name: Debug values
+  debug:
+    msg: "docker_image={{ docker_image }}"
+
+- name: Debug values
+  debug:
+    msg: "registry_username={{ registry_username }}"
 
 - name: Login to registry {{ registry }} with username {{ registry_username }}
   command: docker login {{ registry }} -u {{ registry_username }} -p {{ registry_password }}
