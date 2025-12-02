@@ -55,4 +55,4 @@
       user: cms
       password: "{{ docker_psql_cms_password }}"
     - role: betterstack
-      source_token: "{{ betterstack_collector_secret }}"
+      collector_secret: "{{ betterstack_collector_secret }}"
