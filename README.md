@@ -39,7 +39,22 @@ Comments:
 
 ### Create inventory
 
-Copy the file `volume/conf/inventory.example.yaml` under `volume/conf/inventory.yaml`. Fill this inventory with your own servers list.
+Create an inventory based on the config of the nodes you want to provision.
+
+```
+[group]:
+  hosts:
+    [host]:
+      config: value
+    [host]:
+      config: value
+[group]:
+  hosts:
+    [host]:
+      config: value
+    [host]:
+      config: value
+```
 
 Please, remember that passwords **MUST** be encrypted using Vault (see Encrypt string with Vault)
 

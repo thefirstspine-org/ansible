@@ -5,36 +5,29 @@
   roles:
     - {
         role: "service",
-        service_name: "matches-{{ service_matches_realm }}",
-        repository: "git@github.com:thefirstspine-org/matches.git",
-        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
-        git_ssh_key: "{{ git_ssh_key_template }}",
+        service_name: "matches-{{ realm }}",
         docker_env: {
-            BOTS_URL: "https://{{ service_robots_domain }}", # Deprecated
-            ROBOTS_URL: "https://{{ service_robots_domain }}",
-            AUTH_URL: "https://{{ service_auth_domain }}",
-            MESSAGING_URL: "https://{{ service_messaging_domain }}",
-            REST_URL: "https://{{ service_game_assets_domain }}", # Deprecated - to be deleted. Use GAME_ASSETS_URL instead.
-            GAME_ASSETS_URL: "https://{{ service_game_assets_domain }}",
-            ROOMS_URL: "https://{{ service_rooms_domain }}",
-            SHOP_URL: "https://{{ service_shop_domain }}",
-            CALENDAR_URL: "https://{{ service_calendar_domain }}",
-            MONGO_HOST: "{{ service_matches_mongo_host }}", # MongoDB database host
-            MONGO_DB: "arena", # MongoDB database
-            PRIVATE_KEY: "{{ service_matches_private_key }}", # Private key to validate protected incoming requests
-            BOTS_PUBLIC_KEY: "{{ service_matches_robots_public_key }}", # Deprecated
-            ROBOTS_PUBLIC_KEY: "{{ service_matches_robots_public_key }}", # Public key to interact with protected service
-            MESSAGING_PUBLIC_KEY: "{{ service_matches_messaging_public_key }}", # Public key to interact with protected service
-            ROOMS_PUBLIC_KEY: "{{ service_matches_rooms_public_key }}", # Public key to interact with protected service
-            SHOP_PUBLIC_KEY: "{{ service_matches_shop_public_key }}", # Public key to interact with protected service
-            PORT: "{{ service_matches_external_port | int }}", # The port where to serve the app
-            PURGE_GAMES_AT_STARTUP: "false",
-            SERVICE: "matches:{{ service_matches_realm }}",
+            SERVICE: "matches:{{ realm }}",
             ENV: "{{ env }}",
+            PURGE_GAMES_AT_STARTUP: "false",
+            MONGO_HOST: "{{ mongo_host }}", # MongoDB database host
+            MONGO_DB: "arena", # MongoDB database
+            PRIVATE_KEY: "{{ private_key }}", # Private key to validate protected incoming requests
+            PORT: "{{ external_port | int }}", # The port where to serve the app
+            AUTH_URL: "https://{{ auth_domain }}",
+            MESSAGING_URL: "https://{{ messaging_domain }}",
+            MESSAGING_PUBLIC_KEY: "{{ messaging_public_key }}", # Public key to interact with protected service
+            GAME_ASSETS_URL: "https://{{ game_assets_domain }}",
+            ROOMS_URL: "https://{{ rooms_domain }}",
+            ROOMS_PUBLIC_KEY: "{{ rooms_public_key }}", # Public key to interact with protected service
         },
-        port_container: "{{ service_matches_external_port | int }}",
-        port_nginx: "{{ service_matches_internal_port }}",
-        domain: "{{ service_matches_domain }}",
-        cerbot_email: "{{ certbot_email }}",
-        when: service_matches|d('') == true
+        # Some parameters are commented as they are inherited in roles
+        # registry: "{{ registry }}",
+        # registry_username: "{{ registry_username }}",
+        # registry_password: "{{ registry_password }}",
+        # docker_image: "{{ docker_image }}",
+        port_container: "{{ external_port | int }}",
+        port_nginx: "{{ internal_port }}",
+        # domain: "{{ domain }}",
+        # cerbot_email: "{{ certbot_email }}",
       }
