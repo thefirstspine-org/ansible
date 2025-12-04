@@ -38,7 +38,7 @@
         # registry_password: "{{ registry_password }}",
         # docker_image: "{{ docker_image }}",
         port_container: "{{ external_port | int }}",
-        port_nginx: "{{ internal_port }}",
+        port_nginx: "{{ internal_port | int }}",
         # domain: "{{ domain }}",
         # cerbot_email: "{{ certbot_email }}",
       }
