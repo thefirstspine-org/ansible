@@ -1,6 +1,12 @@
 - name: Download Better Stack Collector
-  command: curl -sSL https://raw.githubusercontent.com/BetterStackHQ/collector/main/install.sh > install_betterstack.sh
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/BetterStackHQ/collector/main/install.sh"
+    dest: /tmp/install_betterstack.sh
+    mode: '0755'
+    force: yes
 - name: Install Better Stack Collector
-  command: COLLECTOR_SECRET="{{ collector_secret }}" bash install_betterstack.sh
+  ansible.builtin.shell: COLLECTOR_SECRET="{{ collector_secret }}" bash /tmp/install_betterstack.sh
+  args:
+    chdir: /tmp
 - name: Restart Docker service
   command: systemctl restart docker
