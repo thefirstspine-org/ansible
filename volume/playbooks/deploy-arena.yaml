@@ -7,7 +7,7 @@
         role: "service",
         service_name: "arena",
         docker_env: {
-            PORT: "{{ external_port | int }}", # The port where to serve the app
+            PORT: "{{ external_port }}", # The port where to serve the app
             SERVICE: "arena",
             ENV: "{{ env }}",
             MATCHES_PUBLIC_KEY: "{{ matches_public_key }}", # Public key to interact with protected service,

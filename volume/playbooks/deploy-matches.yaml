@@ -13,7 +13,7 @@
             MONGO_HOST: "{{ mongo_host }}", # MongoDB database host
             MONGO_DB: "arena", # MongoDB database
             PRIVATE_KEY: "{{ private_key }}", # Private key to validate protected incoming requests
-            PORT: "{{ external_port | int }}", # The port where to serve the app
+            PORT: "{{ external_port }}", # The port where to serve the app
             AUTH_URL: "https://{{ auth_domain }}",
             MESSAGING_URL: "https://{{ messaging_domain }}",
             MESSAGING_PUBLIC_KEY: "{{ messaging_public_key }}", # Public key to interact with protected service
