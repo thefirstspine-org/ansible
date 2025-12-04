@@ -25,7 +25,7 @@
     username: "{{ registry_username | default(omit) }}"
     password: "{{ registry_password | default(omit) }}"
 
-- name: Run image {{ registry | default('docker.io') }}/{{ docker_image | default(service_name) }} under container {{ service_name }}_container
+- name: Run image {{ registry | default('docker.io') }}/{{ docker_image | default(service_name) }} under container {{ service_name }}_container with ports {{ port_nginx }}:{{ port_container }}
   docker_container:
     name: "{{ service_name }}_container"
     image: "{{ registry | default('docker.io') }}/{{ docker_image | default(service_name) }}"
