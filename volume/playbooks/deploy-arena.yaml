@@ -10,8 +10,7 @@
             PORT: "{{ external_port }}", # The port where to serve the app
             SERVICE: "arena",
             ENV: "{{ env }}",
-            MATCHES_PUBLIC_KEY: "{{ matches_public_key }}", # Public key to interact with protected service,
-            BOTS_PUBLIC_KEY: "{{ robots_public_key }}", # Deprecated
+            MATCHES_PUBLIC_KEY: "{{ matches_public_key }}",
             ROBOTS_PUBLIC_KEY: "{{ robots_public_key }}",
             MESSAGING_PUBLIC_KEY: "{{ messaging_public_key }}",
             STEAM_WEB_API_KEY: "{{ steam_web_api_key }}",
