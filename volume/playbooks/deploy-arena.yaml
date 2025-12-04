@@ -7,24 +7,21 @@
         role: "service",
         service_name: "arena",
         docker_env: {
-            PORT: "{{ external_port }}", # The port where to serve the app
             SERVICE: "arena",
             ENV: "{{ env }}",
-            MATCHES_PUBLIC_KEY: "{{ matches_public_key }}",
-            ROBOTS_PUBLIC_KEY: "{{ robots_public_key }}",
-            MESSAGING_PUBLIC_KEY: "{{ messaging_public_key }}",
+            PORT: "{{ external_port | string }}", # The port where to serve the app
             STEAM_WEB_API_KEY: "{{ steam_web_api_key }}",
             REPOSITORIES: "{{ repositories }}",
             CAPPED_POWER: "{{ capped_power }}",
             LIMIT_CARDS: "{{ limit_cards }}",
             LIMIT_DECKS: "{{ limit_decks }}",
-            SHOP_PUBLIC_KEY: "{{ shop_public_key }}",
-            SHOP_URL: "https://{{ shop_domain }}",
-            ARENA_URL: "https://{{ domain }}",
             MATCHES_URL: "https://{{ matches_domain }}",
+            MATCHES_PUBLIC_KEY: "{{ matches_public_key }}",
             AUTH_URL: "https://{{ auth_domain }}",
             ROBOTS_URL: "https://{{ robots_domain }}",
+            ROBOTS_PUBLIC_KEY: "{{ robots_public_key }}",
             MESSAGING_URL: "https://{{ messaging_domain }}",
+            MESSAGING_PUBLIC_KEY: "{{ messaging_public_key }}",
             POSTGRESQL_DATABASE: "{{ pg_database }}", # PostgreSQL database name
             POSTGRESQL_HOST: "{{ pg_host }}", # PostgreSQL database host
             POSTGRESQL_PORT: "{{ pg_port | int }}", # PostgreSQL database port
