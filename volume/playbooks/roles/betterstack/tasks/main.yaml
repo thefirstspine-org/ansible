@@ -1,4 +1,6 @@
 - name: Download Better Stack Collector
-  command: curl -sSL https://raw.githubusercontent.com/BetterStackHQ/collector/main/install.sh | COLLECTOR_SECRET="{{ collector_secret }}" bash
+  command: curl -sSL https://raw.githubusercontent.com/BetterStackHQ/collector/main/install.sh > install_betterstack.sh
+- name: Install Better Stack Collector
+  command: COLLECTOR_SECRET="{{ collector_secret }}" bash install_betterstack.sh
 - name: Restart Docker service
   command: systemctl restart docker
