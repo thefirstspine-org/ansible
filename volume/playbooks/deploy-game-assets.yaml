@@ -14,9 +14,13 @@
             SERVICE: "game-assets",
             ENV: "{{ env }}",
         },
-        port_container: "{{ service_game_assets_external_port | int }}",
-        port_nginx: "{{ service_game_assets_internal_port }}",
-        domain: "{{ service_game_assets_domain }}",
-        cerbot_email: "{{ certbot_email }}",
-        when: service_game_assets|d('') == true
+        # Some parameters are commented as they are inherited in roles
+        # registry: "{{ registry }}",
+        # registry_username: "{{ registry_username }}",
+        # registry_password: "{{ registry_password }}",
+        # docker_image: "{{ docker_image }}",
+        port_container: "{{ external_port | int }}",
+        port_nginx: "{{ internal_port | int }}",
+        # domain: "{{ domain }}",
+        # cerbot_email: "{{ certbot_email }}",
       }
