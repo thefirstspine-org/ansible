@@ -24,7 +24,7 @@
             MESSAGING_PUBLIC_KEY: "{{ messaging_public_key }}",
             POSTGRESQL_DATABASE: "{{ pg_database }}", # PostgreSQL database name
             POSTGRESQL_HOST: "{{ pg_host }}", # PostgreSQL database host
-            POSTGRESQL_PORT: "{{ pg_port | int }}", # PostgreSQL database port
+            POSTGRESQL_PORT: "{{ pg_port | string }}", # PostgreSQL database port
             POSTGRESQL_USERNAME: "{{ pg_username }}", # PostgreSQL username
             POSTGRESQL_PASSWORD: "{{ pg_password }}", # PostgreSQL password
         },
