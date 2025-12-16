@@ -7,8 +7,41 @@
     name: apache2
     state: absent
     purge: yes
-- name: ensure nginx is at the latest version
+- name: Ensure nginx is at the latest version
   apt: name=nginx state=latest
+- name: Change nginx start page
+  copy:
+    dest: /var/www/html/index.html
+    content: |
+      <!DOCTYPE html>
+      <html class="theme-dark">
+          <head>
+              <meta charset="utf-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+              <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+              <link rel="stylesheet" href="https://unpkg.com/bulma@1.0.4/css/bulma.min.css" />
+              <style>
+                  html, body {
+                      height: 100%;
+                      background: linear-gradient(180deg, #000000, #0F0F0F);
+                      color: white;
+                  }
+                  .outline {
+                      font-size: 6em;
+                      color: #050505;
+                      text-shadow: 1px 1px 0 #FFF, -1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px -1px 0 #FFF;
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="container has-text-centered is-uppercase has-text-weight-bold" style="padding-top: 20%;">
+                  <div class="outline">The First Spine</div>
+                  <div>Maintenance in progress - we'll be back soon!</div>
+              </div>
+          </body>
+      </html>
 - name: start nginx
   service:
       name: nginx
