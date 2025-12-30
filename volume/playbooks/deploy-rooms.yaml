@@ -8,15 +8,15 @@
         service_name: "rooms",
         docker_env: {
             AUTH_URL: "https://{{ service_auth_domain }}",
-            PG_DATABASE: "{{ pg_database }}", # PostgreSQL database name
-            PG_HOST: "{{ pg_host }}", # PostgreSQL database host
-            PG_PORT: "{{ pg_port | string }}", # PostgreSQL database port
-            PG_PASSWORD: "{{ pg_password }}", # PostgreSQL password
-            PG_USERNAME: "{{ pg_username }}", # PostgreSQL username
-            PRIVATE_KEY: "{{ private_key }}", # The secret key used to sign JWT
+            PG_DATABASE: "{{ pg_database }}",
+            PG_HOST: "{{ pg_host }}",
+            PG_PORT: "{{ pg_port | string }}",
+            PG_PASSWORD: "{{ pg_password }}",
+            PG_USERNAME: "{{ pg_username }}",
+            PRIVATE_KEY: "{{ private_key }}",
             MESSAGING_PUBLIC_KEY: "{{ messaging_public_key }}",
             SUBJECTS: "{{ subjects }}",
-            PORT: "{{ external_port | string }}", # The port where to serve the app
+            PORT: "{{ external_port | string }}",
             SERVICE: "rooms",
             ENV: "{{ env }}",
         },
