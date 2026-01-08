@@ -6,27 +6,27 @@
     - {
         role: "service",
         service_name: "auth",
-        repository: "git@github.com:thefirstspine-org/auth.git",
-        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
-        git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
-            FB_APP_CLIENT_ID: "{{ service_auth_fb_app_client_id | int }}", # Facebook Client ID used for login with Facebook
-            FB_APP_CLIENT_SECRET: "{{ service_auth_fb_app_client_secret }}", # Facebook Client Secret used for login with Facebook
-            PG_DATABASE: "{{ service_auth_pg_database }}", # PostgreSQL database name
-            PG_HOST: "{{ service_auth_pg_host }}", # PostgreSQL database host
-            PG_PORT: "{{ service_auth_pg_port | int }}", # PostgreSQL database port
-            PG_PASSWORD: "{{ service_auth_pg_password }}", # PostgreSQL password
-            PG_USERNAME: "{{ service_auth_pg_username }}", # PostgreSQL username
-            SECRET_KEY: "{{ service_auth_secret_key }}", # The secret key used to sign JWT
-            SMTP_TRANSPORT: "{{ service_auth_smtp_transport }}", # Smtp transport used to send emails
-            PRIVATE_KEY: "{{ service_auth_private_key }}", # Private key to validate protected incoming requests
-            PORT: "{{ service_auth_external_port | int }}", # The port where to serve the app
             SERVICE: "auth",
             ENV: "{{ env }}",
+            PORT: "{{ external_port | string }}",
+            FB_APP_CLIENT_ID: "{{ fb_app_client_id | string }}",
+            FB_APP_CLIENT_SECRET: "{{ fb_app_client_secret }}",
+            PG_DATABASE: "{{ pg_database }}",
+            PG_HOST: "{{ pg_host }}",
+            PG_PORT: "{{ pg_port | string }}",
+            PG_PASSWORD: "{{ pg_password }}",
+            PG_USERNAME: "{{ pg_username }}",
+            SECRET_KEY: "{{ secret_key }}",
+            SMTP_TRANSPORT: "{{ smtp_transport }}",
         },
-        port_container: "{{ service_auth_external_port | int }}",
-        port_nginx: "{{ service_auth_internal_port }}",
-        domain: "{{ service_auth_domain }}",
-        cerbot_email: "{{ certbot_email }}",
-        when: service_auth|d('') == true
+        # Some parameters are commented as they are inherited in roles
+        # registry: "{{ registry }}",
+        # registry_username: "{{ registry_username }}",
+        # registry_password: "{{ registry_password }}",
+        # docker_image: "{{ docker_image }}",
+        port_container: "{{ external_port | int }}",
+        port_nginx: "{{ internal_port }}",
+        # domain: "{{ domain }}",
+        # cerbot_email: "{{ certbot_email }}",
       }
