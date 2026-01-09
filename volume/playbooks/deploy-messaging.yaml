@@ -9,7 +9,7 @@
         docker_env: {
             AUTH_URL: "https://{{ auth_domain }}",
             PRIVATE_KEY: "{{ private_key }}", # Private key to validate protected incoming requests
-            PORT: "{{ external_port | int }}", # The port where to serve the app
+            PORT: "{{ external_port | string }}", # The port where to serve the app
             SERVICE: "messaging",
             ENV: "{{ env }}",
         },
