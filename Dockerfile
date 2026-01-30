@@ -1,10 +1,26 @@
 FROM ubuntu:24.04
 
-RUN apt update
-RUN apt install software-properties-common --yes
-RUN apt-add-repository --yes --update ppa:ansible/ansible
-RUN apt update
-RUN apt list --all-versions ansible
-RUN apt install ansible=9.2.0 --yes
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        python3 \
+        python3-pip \
+        python3-venv \
+        pipx \
+        sshpass \
+        openssh-client \
+        git \
+        curl \
+        ca-certificates && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV ANSIBLE_PERSISTENT_COMMAND_TIMEOUT=600
+# Install Ansible 12.3 via pipx (isolated environment)
+RUN pipx install --include-deps ansible==12.3.0
+
+# Ensure ansible is on PATH
+ENV PATH="/root/.local/bin:${PATH}"
+
+# Validate installation
+RUN ansible --version
+
+CMD [ "bash" ]
