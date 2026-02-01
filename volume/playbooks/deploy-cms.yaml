@@ -6,9 +6,6 @@
     - {
         role: "service",
         service_name: "cms",
-        repository: "git@github.com:thefirstspine-org/cms.git",
-        branch: "{{ lookup('ansible.builtin.env', 'BRANCH')|default('master', True) }}",
-        git_ssh_key: "{{ git_ssh_key_template }}",
         docker_env: {
             HOST: "0.0.0.0",
             PORT: "{{ service_cms_external_port | int }}", # The port where to serve the app
@@ -27,11 +24,15 @@
             DATABASE_SSL: "false",
             JWT_SECRET: "{{ service_cms_jwt_secret }}",
         },
+        # Some parameters are commented as they are inherited in roles
+        # registry: "{{ registry }}",
+        # registry_username: "{{ registry_username }}",
+        # registry_password: "{{ registry_password }}",
+        # docker_image: "{{ docker_image }}",
         volume_host: "/var/www/html/cms",
         volume_container: "/cms/public",
         port_container: "{{ service_cms_external_port | int }}",
         port_nginx: "{{ service_cms_internal_port }}",
-        domain: "{{ service_cms_domain }}",
-        cerbot_email: "{{ certbot_email }}",
-        when: service_cms|d('') == true
+        # domain: "{{ domain }}",
+        # cerbot_email: "{{ certbot_email }}",
       }
