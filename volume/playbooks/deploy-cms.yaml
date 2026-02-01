@@ -8,7 +8,7 @@
         service_name: "cms",
         docker_env: {
             HOST: "0.0.0.0",
-            PORT: "{{ external_port | int }}", # The port where to serve the app
+            PORT: "{{ external_port | string }}", # The port where to serve the app
             CMS_URL: "https://{{ domain }}",
             APP_KEYS: "{{ app_keys }}",
             API_TOKEN_SALT: "{{ token_salt }}",
@@ -17,7 +17,7 @@
             ENCRYPTION_KEY: "{{ encryption_key }}",
             DATABASE_CLIENT: "postgres",
             DATABASE_HOST: "{{ pg_host }}",
-            DATABASE_PORT: "{{ pg_port | int }}",
+            DATABASE_PORT: "{{ pg_port | string }}",
             DATABASE_NAME: "{{ pg_database }}",
             DATABASE_PASSWORD: "{{ pg_password }}",
             DATABASE_USERNAME: "{{ pg_username }}",
