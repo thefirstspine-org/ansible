@@ -14,6 +14,9 @@
   debug:
     msg: "docker_image={{ docker_image | default(service_name) }}"
 
+- name: Prune all unused docker images to free up space
+  command: docker image prune -a -f
+
 - name: Ensure volume {{ volume_host | default('/tmp') }} directory exists.
   file:
     path: "{{ volume_host | default('/tmp') }}"
